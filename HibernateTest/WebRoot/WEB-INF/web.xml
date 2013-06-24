@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <welcome-file-list>
+    <welcome-file>staticHead.jsp</welcome-file>
+  </welcome-file-list>
+    <servlet>
+  <servlet-name>navigate</servlet-name>
+  <servlet-class>servlet.navigate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>navigate</servlet-name>
+  <url-pattern>/navigate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>MailSender</servlet-name>
+  	<servlet-class>servlet.MailSender</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MailSender</servlet-name>
+  	<url-pattern>/MailSender</url-pattern>
+  </servlet-mapping>
+    <servlet>
+  	<servlet-name>checklogin</servlet-name>
+  	<servlet-class>servlet.checklogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>checklogin</servlet-name>
+  	<url-pattern>/checklogin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>startPlan</servlet-name>
+  	<servlet-class>servlet.startPlan</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>startPlan</servlet-name>
+  	<url-pattern>/startPlan</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
