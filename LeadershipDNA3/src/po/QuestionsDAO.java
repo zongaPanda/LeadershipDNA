@@ -18,7 +18,7 @@ public class QuestionsDAO {
 	
 	public void save(Questions question){
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
-		Transaction tx = null;
+		Transaction tx = session.beginTransaction();
 		try {
 			//tx = session.beginTransaction();
 			session.save(question);
@@ -33,9 +33,25 @@ public class QuestionsDAO {
 		}	
 	}
 	
+	public void delete(Questions question){
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			session.delete(question);
+			tx.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+	}
+	
 	public List findByProperty(String propertyName, Object value) {
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
-		Transaction tx = null;	
+		Transaction tx = session.beginTransaction();	
 		try {	
 			String queryString = "from Questions as model where model."+propertyName+"=?";
 			Query queryObject = session.createQuery(queryString);
@@ -55,6 +71,21 @@ public class QuestionsDAO {
 	
 	public List findByContent(Object content){
 		return findByProperty(CONTENT, content);
+	}
+	
+	public List findAll(){
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		try{
+			String queryString = "from Questions";
+			Query queryObject = session.createQuery(queryString);
+			return queryObject.list();
+		}catch(RuntimeException re){
+			session.getTransaction().rollback();
+			re.printStackTrace();
+			throw re;
+		}finally{
+			session.close();
+		}
 	}
 	
 	

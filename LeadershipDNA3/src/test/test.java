@@ -41,7 +41,6 @@ public class test {
 			for(i=0;i<list.size();i++){
 				System.out.println(((Questions)list.get(i)).getQid());
 				System.out.println(((Questions)list.get(i)).getContent());
-				
 			}
 			
 			
