@@ -1,15 +1,8 @@
 package po;
 import java.util.List;
-import java.util.Set;
-
-import javax.servlet.jsp.tagext.TryCatchFinally;
-//import org.apache.commons.logging.Log;
-//import org.apache.commons.logging.LogFactory;
-import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Example;
 import SessionFactory.*;
 
 
@@ -47,6 +40,18 @@ public class QuestionsDAO {
 			session.close();
 		}
 		
+	}
+	
+	public Questions findById(java.lang.Long id) {
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		try {
+			Questions instance = (Questions) session.get("po.Questions", id);
+			return instance;
+		} catch (RuntimeException re) {
+			throw re;
+		}finally{
+			session.close();
+		}
 	}
 	
 	public List findByProperty(String propertyName, Object value) {
