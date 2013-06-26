@@ -41,6 +41,7 @@ public class QuestionsDAO {
 			Query queryObject = session.createQuery(queryString);
 			queryObject.setParameter(0, value);
 			//tx.commit();
+			//fdasf
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			// TODO: handle exception
