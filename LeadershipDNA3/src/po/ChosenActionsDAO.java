@@ -5,15 +5,15 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import SessionFactory.*;
 
-public class AnswersDAO {
-	public static final String ANSWER = "answer";
-	public static final String COMMENT = "comment";
+public class ChosenActionsDAO {
+	public static final String SUPPORT = "support";
+	public static final String FINISHED = "finished";
 	
-	public void save(Answers answer){
+	public void save(ChosenActions chosenaction){
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
 		try {
-			session.save(answer);
+			session.save(chosenaction);
 			tx.commit();
 			
 		} catch (Exception e) {
@@ -25,11 +25,11 @@ public class AnswersDAO {
 		}	
 	}
 	
-	public void delete(Answers answer){
+	public void delete(ChosenActions chosenaction){
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
 		try {
-			session.delete(answer);
+			session.delete(chosenaction);
 			tx.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -37,14 +37,13 @@ public class AnswersDAO {
 			e.printStackTrace();
 		}finally{
 			session.close();
-		}
-		
+		}	
 	}
 	
-	public Answers findById(java.lang.Long id) {
+	public ChosenActions findById(java.lang.Long id) {
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
 		try {
-			Answers instance = (Answers) session.get("po.Answers", id);
+			ChosenActions instance = (ChosenActions) session.get("po.ChosenActions", id);
 			return instance;
 		} catch (RuntimeException re) {
 			throw re;
@@ -56,7 +55,7 @@ public class AnswersDAO {
 	public List findByProperty(String propertyName, Object value) {
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
 		try {	
-			String queryString = "from Answers as model where model."+propertyName+"=?";
+			String queryString = "from ChosenActions as model where model."+propertyName+"=?";
 			Query queryObject = session.createQuery(queryString);
 			queryObject.setParameter(0, value);
 			return queryObject.list();
@@ -70,18 +69,18 @@ public class AnswersDAO {
 		}
 	}
 	
-	public List findByAnswer(Object answer) {
-		return findByProperty(ANSWER, answer);
+	public List findBySupport(Object support) {
+		return findByProperty(SUPPORT, support);
 	}
 
-	public List findByComment(Object comment) {
-		return findByProperty(COMMENT, comment);
+	public List findByFinished(Object finished) {
+		return findByProperty(FINISHED, finished);
 	}
 	
 	public List findAll(){
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
 		try{
-			String queryString = "from Answers";
+			String queryString = "from ChosenActions";
 			Query queryObject = session.createQuery(queryString);
 			return queryObject.list();
 		}catch(RuntimeException re){
@@ -92,7 +91,5 @@ public class AnswersDAO {
 			session.close();
 		}
 	}
-	
-	
 
 }
