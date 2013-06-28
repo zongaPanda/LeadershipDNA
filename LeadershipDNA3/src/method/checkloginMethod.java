@@ -1,32 +1,26 @@
 package method;
-import po.Employee;
+import java.util.List;
 
-import po.Users;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import po.*;
+import SessionFactory.*;
 
 
 public class checkloginMethod {
-	public boolean checkNameAndPwd(String name, String pwd){
+	public boolean checkNameAndPwd(Long name, String pwd){
 		boolean ret=false;
-		//EmployeeDAO employeeDAO = new EmployeeDAO();
-		//UsersDAO usersDAO = new UsersDAO();
-		//System.out.println(employeeDAO.findAll().size());
-		//System.out.println(usersDAO.findAll().size());
-		//if(employeeDAO.findByEname(name).size()!=0){
-			//long uid=((Employee)(employeeDAO.findByEname(name).get(0))).getUid();
-			//if(usersDAO.findByUid(uid).size()!=0){
-				//String passwd = ((Users)(usersDAO.findByUid(uid).get(0))).getPasswd();
-				//if(passwd.equals(pwd)){
-					//return true;
-				//}
-			//}
-			//else{
-				//return false;
-			//}
-	//	}
-		//else{
-		//	return false;
-	//	}
-		return ret;
+	
+		UsersDAO usersDAO = new UsersDAO();
+		if(usersDAO.findByUid(name).size()!=0){
+			String passwd = ((Users)usersDAO.findByUid(name).get(0)).getPasswd();
+			if(passwd.equals(pwd)){
+				return true;
+			}else return false;
+		}else return false;
 	}
 	
 }

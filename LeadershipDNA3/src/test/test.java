@@ -37,11 +37,19 @@ public class test {
 			List list = queryObject.list();*/
 			QuestionsDAO questionsdao = new QuestionsDAO();
 			List list = questionsdao.findByContent("fdsafds");
-			int i=0;
-			for(i=0;i<list.size();i++){
-				System.out.println(((Questions)list.get(i)).getQid());
-				System.out.println(((Questions)list.get(i)).getContent());
-			}
+//			int i=0;
+//			for(i=0;i<list.size();i++){
+//				System.out.println(((Questions)list.get(i)).getQid());
+//				System.out.println(((Questions)list.get(i)).getContent());
+//			}
+			
+			QuestionsDAO q = new QuestionsDAO();
+			AnswersDAO ad = new AnswersDAO();
+			Answers an = new Answers();
+			//an.setAnswer("fdasfsa");
+			//an.setComment("fdasfdsgas");
+			an.setQuestions((Questions)q.findAll().get(0));
+			ad.save(an);
 			
 			
 					

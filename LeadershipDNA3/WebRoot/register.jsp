@@ -28,15 +28,35 @@
 		</style>
 		<script type="text/javascript">
 			//window.onload(function(){$('#rightDIV2').hide();}	);
-			$(document).ready(function(){$('#rightDIV2').hide();$('#rightDIV3').hide();});
+			$(document).ready(function(){$('#rightDIV2').hide();$('#rightDIV3').hide();$("#myModal").modal('hide')});
 		
 			function hiden(e){
+				var job_number = $("#job_number");
+				var name = $("#name");
+				var email_address = $("#email_address");
+
+				if(job_number.val()==''||name.val()==''||email_address.val()==''){
+					$("#myModal").modal('show');
+					return false;
+				}
+				
+				var regu = "^(([0-9a-zA-Z]+)|([0-9a-zA-Z]+[_.0-9a-zA-Z-]*[0-9a-zA-Z]+))@([a-zA-Z0-9-]+[.])+([a-zA-Z]{2}|net|NET|com|COM|gov|GOV|mil|MIL|org|ORG|edu|EDU|int|INT)$"  
+				var re = new RegExp(regu);
+				
+				if (email_address.val().search(re) != -1) {  
+					  
+				} else {  
+					window.alert ("请输入有效合法的E-mail地址 ！")  
+					return false;  
+				} 
+
 				$('#rightDIV').hide(500);
 				$('#rightDIV2').show(500);	
 				$('#flow1').css('color','black');
 				$('#flow2').css("color","#CB1B1E");
 				<%//MailSender.send("168chengyuxing@sina.com", "1433119561@qq.com", "hello", "3this is a test , cyx. Your license is 123456789");%>
-				
+				//$("#MailForm").submit();
+				document.getElementById("MailForm").submit();
 				
 			}
 			
@@ -96,22 +116,22 @@
 		</div>
 	</div>
 	
-	 <form name="MailForm" method="post" action="./MailSender"> 
-	<div id="rightDIV" class="container" style="background-color:#F2F2F2;border:2px solid #E1E1E1; height:688px;width:900px;margin-left: 0px;margin-left: 20px;float: left;">
-		<div style="max-width: 850px;"><legend style="margin-left: 30px;">personal information</legend></div>
-		<div style="margin-left: 30px;">
-			<label style="margin-top: 30px;font-size: 20px;">enter your job number</label>
-    		<input class="input-xlarge" type="text" placeholder="job number...">
-			<label style="margin-top: 30px;font-size: 20px;">enter your name</label>
-    		<input class="input-xlarge" type="text" placeholder="your name...">
-    		<label style="margin-top: 30px;font-size: 20px;">enter your email address</label>
-    		<input class="input-xlarge" type="text" placeholder="email address...">
-    		
-    	</div>
-    	<div style="margin-top: 30px;">
-    		<button class="btn btn-large btn-primary"  type="submit"  style="margin-left: 50px;" onclick="hiden(this)">confirm and get a license</button>
-    	</div>
-	</div>
+	 <form id="MailForm" method="post" action="./MailSender"> 
+		<div id="rightDIV" class="container" style="background-color:#F2F2F2;border:2px solid #E1E1E1; height:688px;width:900px;margin-left: 0px;margin-left: 20px;float: left;">
+			<div style="max-width: 850px;"><legend style="margin-left: 30px;">personal information</legend></div>
+			<div style="margin-left: 30px;">
+				<label  style="margin-top: 30px;font-size: 20px;">enter your job number</label>
+	    		<input    id="job_number" class="input-xlarge" type="text" placeholder="job number...">
+				<label style="margin-top: 30px;font-size: 20px;">enter your name</label>
+	    		<input id="name" class="input-xlarge" type="text" placeholder="your name...">
+	    		<label style="margin-top: 30px;font-size: 20px;">enter your email address you registed in company</label>
+	    		<input id="email_address" class="input-xlarge" type="text" placeholder="email address...">
+	    		
+	    	</div>
+	    	<div style="margin-top: 30px;">
+	    		<button class="btn btn-large btn-primary"  type="button"  style="margin-left: 50px;" onclick="hiden(this)">confirm and get a license</button>
+	    	</div>
+		</div>
 	  </form>
 
 	
@@ -139,6 +159,23 @@
     		<button class="btn btn-large btn-primary"  type="button"  style="margin-left: 50px;" onclick="showMsg(this)">confirm</button>
     	</div>
 	</div>
+
+	<div id="myModal" class="modal hide fade">
+  			<div class="modal-header">
+    			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    			<h3 style="color: red;">ERROR!</h3>
+  			</div>
+  			<div class="modal-body">
+    			<p style="font-size: 20px;" id="cautionContent">please complete the information</p>
+ 			</div>
+  			<div class="modal-footer">
+    			<a class="btn" data-dismiss="modal" aria-hidden="true">close</a>
+   				<!-- <a href="#" class="btn btn-primary">Save changes</a> -->
+  			</div>
+		</div>
+   </body>
+
+
 	
 </div>
 </body>

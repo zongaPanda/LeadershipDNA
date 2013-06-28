@@ -43,6 +43,8 @@
     
     <script>
     //$('#myModal').modal('show');
+    $(document).ready(function(){$('#myModal2').modal('hidden');});
+    
     window.onload=function(){
     	var btn = document.getElementById("btn1");
     	btn.onclick = function(){
@@ -72,10 +74,13 @@
     		document.getElementById("form1").submit();
     	}
     }
+    
     function modal(){
     	$('#myModal').modal('show');
     }
 </script>
+  
+
 
   <head> 
     <title>login</title>
@@ -91,10 +96,10 @@
     	</div>
       	 <form id="form1" class="form-signin" action="./checklogin" method="post">
         	<h2 class="form-signin-heading" style="text-align: center;">Please Log In</h2>
-        	<input id="a" name="username" type="text" class="input-block-level" placeholder="username（letters or digits）" onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" >
+        	<input id="a" name="username" type="text" class="input-block-level" placeholder="your job number ( digit only )" onkeyup="value=value.replace(/[^\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" >
         	<input id="b" name="password" type="password" class="input-block-level" placeholder="password">
      		<div>
-     			<label class="checkbox">
+     			  <label class="checkbox">
         			<input type="checkbox"> Remember me
       			</label>
      		</div>
@@ -118,8 +123,34 @@
    				<!-- <a href="#" class="btn btn-primary">Save changes</a> -->
   			</div>
 		</div>
-   	
    </body>
+   
+   <div id="myModal2" class="modal hide fade">
+  			<div class="modal-header">
+    			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    			<h3 style="color: red;">ERROR!</h3>
+  			</div>
+  			<div class="modal-body">
+    			<p style="font-size: 20px;" id="cautionContent">Wrong Username or Password</p>
+ 			</div>
+  			<div class="modal-footer">
+    			<a class="btn" data-dismiss="modal" aria-hidden="true" aria-hidden="true">close</a>
+   				<!-- <a href="#" class="btn btn-primary">Save changes</a> -->
+  			</div>
+		</div>
+		
+		<%
+    Boolean login = (Boolean)session.getAttribute("login");
+		if(login!=null){
+    if(!login){
+      %>
+        <script type="text/javascript">
+          $("#myModal2").modal('show');
+        </script>
+      <%
+    }
+		}
+  %>
 	
   
 </html>

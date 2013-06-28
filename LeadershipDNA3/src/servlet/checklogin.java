@@ -23,14 +23,20 @@ public class checklogin extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
-		String name=request.getParameter("username");
+		String uid=request.getParameter("username");
 		String psw=request.getParameter("password");
 		checkloginMethod clm = new checkloginMethod();
-		if(clm.checkNameAndPwd(name, psw)){
+		Long l = Long.parseLong(uid);
+		HttpSession session = request.getSession();
+		if(clm.checkNameAndPwd(l, psw)){
+			session.setAttribute("login", true);
+			session.setAttribute("currentUser", uid);
 			response.sendRedirect("staticHead.jsp");
 		}
+		
 		else{
-			response.sendRedirect("loginfailed.html");
+			session.setAttribute("login", false);
+			response.sendRedirect("login.jsp");
 		}
 		//response.sendRedirect("staticHead.jsp");
 	}

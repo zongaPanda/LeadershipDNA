@@ -3,20 +3,20 @@ import java.io.*;
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
-import java.util.Properties;
 import javax.activation.*;
 import javax.mail.*;
 import javax.mail.Message.*;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.mail.internet.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import method.*;
 
 public class MailSender extends HttpServlet{
 	public static final String mailAddress="168chengyuxing@sina.com";
@@ -68,7 +68,16 @@ public class MailSender extends HttpServlet{
 				b="1433119561@qq.com";
 				c="hello";
 				d="2this is a test , cyx. Your license is 123456789";
-				send(a,b,c,d);
+				
+				String job_number = request.getParameter("job_number");
+				String name =request.getParameter("name");
+				String email_address = request.getParameter("email_address");
+				HttpSession session = request.getSession();
+				String currentUser = (String)session.getAttribute("currentUser");
+				System.out.println("the current user's id is "+currentUser);
+				
+				MailSenderMethod.mailCheck(job_number,name,email_address,currentUser);
+				//send(a,b,c,d);
 				response.sendRedirect("register2.jsp");	
 			}
 	
