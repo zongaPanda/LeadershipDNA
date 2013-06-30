@@ -63,22 +63,31 @@ public class MailSender extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-				String a,b,c,d;
-				a="168chengyuxing@sina.com";
-				b="1433119561@qq.com";
-				c="hello";
-				d="2this is a test , cyx. Your license is 123456789";
 				
-				String job_number = request.getParameter("job_number");
-				String name =request.getParameter("name");
-				String email_address = request.getParameter("email_address");
+				//HttpSession.invalidate();
+				String job_number = request.getParameter("jn");
+				System.out.println("job number is : "+job_number);
+				String name =request.getParameter("n");
+				String email_address = request.getParameter("ea");
 				HttpSession session = request.getSession();
 				String currentUser = (String)session.getAttribute("currentUser");
 				System.out.println("the current user's id is "+currentUser);
-				
-				MailSenderMethod.mailCheck(job_number,name,email_address,currentUser);
+				int msm = MailSenderMethod.mailCheck(job_number,name,email_address);
+				if(msm==0){
+					session.setAttribute("registerUser", job_number);
+					response.sendRedirect("register2.jsp");
+				}else if(msm==1){
+					System.out.println("错误类型："+msm);
+					response.sendRedirect("registerfailed.jsp");
+				}else if(msm==2){
+					System.out.println("错误类型："+msm);
+					response.sendRedirect("registerfailed.jsp");
+				}else if(msm==3){
+					session.setAttribute("registerUser", job_number);
+					response.sendRedirect("register2.jsp");
+				}
 				//send(a,b,c,d);
-				response.sendRedirect("register2.jsp");	
+				//response.sendRedirect("register2.jsp");	
 			}
 	
 }

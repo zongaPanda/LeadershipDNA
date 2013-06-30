@@ -31,7 +31,7 @@ public class checklogin extends HttpServlet{
 		if(clm.checkNameAndPwd(l, psw)){
 			session.setAttribute("login", true);
 			session.setAttribute("currentUser", uid);
-			response.sendRedirect("staticHead.jsp");
+			response.sendRedirect("afterLogin.jsp");
 		}
 		
 		else{

@@ -121,11 +121,11 @@
 			<div style="max-width: 850px;"><legend style="margin-left: 30px;">personal information</legend></div>
 			<div style="margin-left: 30px;">
 				<label  style="margin-top: 30px;font-size: 20px;">enter your job number</label>
-	    		<input    id="job_number" class="input-xlarge" type="text" placeholder="job number...">
+	    		<input    id="job_number" name="jn" class="input-xlarge" type="text" placeholder="job number...">
 				<label style="margin-top: 30px;font-size: 20px;">enter your name</label>
-	    		<input id="name" class="input-xlarge" type="text" placeholder="your name...">
+	    		<input id="name" name="n" class="input-xlarge" type="text" placeholder="your name...">
 	    		<label style="margin-top: 30px;font-size: 20px;">enter your email address you registed in company</label>
-	    		<input id="email_address" class="input-xlarge" type="text" placeholder="email address...">
+	    		<input id="email_address" name="ea" class="input-xlarge" type="text" placeholder="email address...">
 	    		
 	    	</div>
 	    	<div style="margin-top: 30px;">

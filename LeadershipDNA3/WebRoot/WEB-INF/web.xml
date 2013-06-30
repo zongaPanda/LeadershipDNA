@@ -41,4 +41,31 @@
   	<url-pattern>/startPlan</url-pattern>
   </servlet-mapping>
   
+      <servlet>
+  	<servlet-name>CheckLicense</servlet-name>
+  	<servlet-class>servlet.CheckLicense</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CheckLicense</servlet-name>
+  	<url-pattern>/CheckLicense</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CheckPassword</servlet-name>
+  	<servlet-class>servlet.CheckPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CheckPassword</servlet-name>
+  	<url-pattern>/CheckPassword</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>Logout</servlet-name>
+  	<servlet-class>servlet.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Logout</servlet-name>
+  	<url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

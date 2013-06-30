@@ -42,6 +42,22 @@ public class UsersDAO {
 		}	
 	}
 	
+	public void update(Users user){
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			session.update(user);
+			tx.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+	}
+	
 	public Users findById(java.lang.Long id) {
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
 		try {
