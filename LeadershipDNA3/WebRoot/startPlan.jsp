@@ -7,7 +7,7 @@
 <title> start plan</title>
 </head>
 <body>
- <form id="startPlanForm" class="form-signin" action="./initiate" method="post">
+ <form id="startPlanForm" class="form-signin" action="nominate.jsp" method="post">
         	<h2 class="form-signin-heading" style="text-align: center;">Do you want to start a new plan?</h2>
         	
      		<div>

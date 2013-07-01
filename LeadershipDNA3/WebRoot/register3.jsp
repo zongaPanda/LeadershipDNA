@@ -62,9 +62,11 @@
 				if(password1.val()==''){
 					$("#cautionContent").html("not completed");
 					$("#myModal").modal('show');
+					return false;
 				}else if(password1.val()!=password2.val()){
 					$("#cautionContent").html("validate password is not the same with password");
 					$("#myModal").modal('show');
+					return false;
 				}
 				$('#PasswordForm').submit();
 			}

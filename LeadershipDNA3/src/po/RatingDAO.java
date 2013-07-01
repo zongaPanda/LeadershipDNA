@@ -1,4 +1,6 @@
 package po;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -39,6 +41,26 @@ public class RatingDAO {
 		}finally{
 			session.close();
 		}	
+	}
+	
+	public void newRating(long t,long r){
+		Rating rating=new Rating();
+		rating.setTargetId(t);
+		rating.setToWhom(r);
+		rating.setFinished(false);
+		
+		Date now=new Date();
+		rating.setStartDate(now);
+		
+		Calendar cd = Calendar.getInstance();
+		cd.setTime(new Date());
+		int duration = 14;
+		cd.add(Calendar.DATE, duration);
+		Date newDate = cd.getTime();
+		rating.setDueDate(newDate);
+		
+		save(rating);
+		
 	}
 	
 	public Rating findById(java.lang.Long id) {

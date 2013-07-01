@@ -40,7 +40,7 @@ public class LayerDAO {
 		}	
 	}
 	
-	public Layer findById(java.lang.Long id) {
+	public Layer findById(java.lang.Integer id) {
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
 		try {
 			Layer instance = (Layer) session.get("po.Layer", id);

@@ -287,12 +287,7 @@
 		    <ul class="user_fun_sub">
 		      <li><a href="dashboard.jsp">Dashboard</a></li>
 		      <li><a href="userInformation.jsp">User information</a></li>
-		      <li><a href="#">Settings</a></li>
-		      <li><a href="#">Items</a></li>
-		      <li><a href="#">Media</a></li>
-		      <li><a href="#">Pages</a></li>
-		      <li><a href="#">Network Admin</a></li>
-		      <li><a href="#">My Sites</a></li>
+		      <li><a href="nominate.jsp">nominate</a></li>
 		    </ul>
 		  </li>
 		<ul>
