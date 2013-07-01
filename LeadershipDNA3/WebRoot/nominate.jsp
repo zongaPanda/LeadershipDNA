@@ -32,6 +32,7 @@
         window.alert(object.length);
         request.setParameter("isle",false);
         for (var i=0; i < object.length; i++){
+        	window.alert('hehe');
         	window.alert('object['+i+'].type='+object[i].type+'     '+object[i].checked);
                 if ( object[i].type=="checkbox" &&  object[i].checked ){    
                 
