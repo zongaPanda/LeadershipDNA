@@ -15,6 +15,7 @@ public class Plan implements java.io.Serializable {
 	private String targetId;
 	private Boolean isApproved;
 	private Boolean finished;
+	private Boolean isConfirmed;
 	private Set remarkses = new HashSet(0);
 	private Set chosenActionses = new HashSet(0);
 
@@ -64,7 +65,15 @@ public class Plan implements java.io.Serializable {
 	public void setIsApproved(Boolean isApproved) {
 		this.isApproved = isApproved;
 	}
+	
+	public Boolean getIsConfirmed() {
+		return this.isConfirmed;
+	}
 
+	public void setIsConfirmed(Boolean isApproved) {
+		this.isConfirmed = isApproved;
+	}
+	
 	public Boolean getFinished() {
 		return this.finished;
 	}

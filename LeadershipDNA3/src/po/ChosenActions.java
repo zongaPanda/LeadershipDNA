@@ -12,10 +12,12 @@ public class ChosenActions implements java.io.Serializable {
 
 	private Long indx;
 	private Plan plan;
+	private long pId;
 	private CusActions cusActions;
 	private Date dueDate;
 	private String support;
 	private Boolean finished;
+	
 
 	// Constructors
 
@@ -49,6 +51,12 @@ public class ChosenActions implements java.io.Serializable {
 
 	public void setPlan(Plan plan) {
 		this.plan = plan;
+	}
+	public long getPid(){
+		return plan.getPid();
+	}
+	public void setPid(){
+		this.pId=plan.getPid();
 	}
 
 	public CusActions getCusActions() {

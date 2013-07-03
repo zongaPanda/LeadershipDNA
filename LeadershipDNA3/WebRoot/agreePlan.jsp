@@ -1,17 +1,20 @@
 <!-- 
 	author:hsz
-	date:2013/7/2
+	date:2013/7/3
  -->
 
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
+<%@ page import="po.ChosenActions" %>
+<%@ page import="po.Plan" %>
+<%@ page import="po.PlanDAO" %>
+<%@ page import="po.ChosenActionsDAO" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
         <script src="js/jquery1.83.js" > </script>
         <script src="js/bootstrap-transition.js"></script>
         <script src="js/bootstrap-modal.js"></script>
         <script src="js/bootstrap-button.js"></script>      
-         <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 		
 
@@ -35,10 +38,23 @@
   
   <body >
   
-  <%//session.setAttribute("planID","1");
+<%
+  ChosenActionsDAO cDao=new ChosenActionsDAO();
+  PlanDAO pDao=new PlanDAO();
+  
+  session.setAttribute("planID","2");
   //should be set when start the plan or continue reviewing
-     
-  %>
+  
+  String spid=(String)session.getAttribute("planID");
+  Long pid=Long.parseLong(spid);
+  
+  
+  Plan plan=pDao.findById(pid);
+  List cActions=cDao.findByPlan(plan);
+  Iterator cit=cActions.iterator();
+  
+  int indx=0;
+%>
   
   
   <form id="review" action="" method="post">
@@ -46,13 +62,13 @@
   <div class="row-fluid">
     <div style="border:1px; background:#FFF" class="span12" >
     <h3>
-				add new actions
+				confirm the actions and agree the plan
 			</h3>
       <table class="table table-striped">
         <thead>
           <tr>
             <th>
-              index
+              action ID
             </th>
             <th>
               content
@@ -61,28 +77,47 @@
               links
             </th>
             <th>
+              dueDate
+            </th>
+            <th>
+              support
+            </th>
+            <th>
               edit
             </th>
           </tr>
         </thead>
         <tbody class="add">
-          <tr id="1">
+        <%while(cit.hasNext()){
+        	ChosenActions ca=(ChosenActions)cit.next();
+        	indx++;
+        	%>
+        
+          <tr id=<%= indx%>>
             <td>
-              1
+              <%=ca.getCusActions().getAid() %>
             </td>
             <td>
-              <input type="text" name="content">
+            <%=ca.getCusActions().getContent() %>
+            </td>
+            <th>
+             <%=ca.getCusActions().getLink() %>
+            </th>
+            <td>
+              <input type="text" name="duedate">
             </td>
             <td>
-              <input type="text" name="link">
+              <input type="text" name="support">
             </td>
             <td>
               
-              <button class="btn btn-info" type="button" onClick="removeR(1)">delete</button>
+              <button class="btn btn-info" type="button" onClick="removeR(<%=indx%>)">delete</button>
             </td>
             
           </tr >
-          
+          <%
+          }
+          %>
 
 
 

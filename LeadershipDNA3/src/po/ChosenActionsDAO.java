@@ -8,6 +8,8 @@ import SessionFactory.*;
 public class ChosenActionsDAO {
 	public static final String SUPPORT = "support";
 	public static final String FINISHED = "finished";
+	public static final String PID = "pId";
+	public static final String PLAN = "plan";
 	
 	public void save(ChosenActions chosenaction){
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
@@ -61,7 +63,7 @@ public class ChosenActionsDAO {
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			// TODO: handle exception
-			session.getTransaction().rollback();
+		//	session.getTransaction().rollback();
 			re.printStackTrace();	
 			throw re;
 		}finally{
@@ -71,6 +73,12 @@ public class ChosenActionsDAO {
 	
 	public List findBySupport(Object support) {
 		return findByProperty(SUPPORT, support);
+	}
+	public List findByPID(Object pid) {
+		return findByProperty(PID, pid);
+	}
+	public List findByPlan(Object plan) {
+		return findByProperty(PLAN, plan);
 	}
 
 	public List findByFinished(Object finished) {

@@ -50,6 +50,7 @@ public class addAction extends HttpServlet{
 	    		 choA.setPlan(myPlan);
 	    		 choA.setFinished(false);
 	    		 choA.setCusActions(cusA);
+	    		 //choA.setPid();
 	    		 caDao.save(choA);
 	    	 }
 	     }
@@ -61,9 +62,12 @@ public class addAction extends HttpServlet{
 	    	 /*save to chosen actions*/
     		 ChosenActions choA=new ChosenActions();
     		 choA.setPlan(myPlan);
+    		 //choA.setPid();
     		 choA.setFinished(false);
     		 choA.setCusActions(cusA);
     		 caDao.save(choA);
 	     }
+	     
+	     response.sendRedirect("agreePlan.jsp");
 	}
 }

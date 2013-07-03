@@ -36,7 +36,7 @@
   
   <body >
   
-  <%session.setAttribute("planID","1");
+  <%session.setAttribute("planID","2");
   //should be set when start the plan or continue reviewing
      
   %>

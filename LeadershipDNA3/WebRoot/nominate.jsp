@@ -31,6 +31,12 @@
         var others=0;
         //boolean islegal=true;
         window.alert(object.length);
+<<<<<<< HEAD
+    
+        for (var i=0; i < object.length; i++){
+        	//window.alert('hehe');
+        	//window.alert('object['+i+'].type='+object[i].type+'     '+object[i].checked);
+=======
         //request.setParameter("isle",false);
         var len = object.length;
         var i = 0 ; 
@@ -38,31 +44,54 @@
         for(i=0; i<len ; i++){
         	//window.alert('hehe');
         	//window.alert('object['+i+'].type='+object[i].type+'     '+object[i].checked+'  object\'s name is :'+object[i].value);
+>>>>>>> refs/remotes/origin/master
                 if ( object[i].type=="checkbox" &&  object[i].checked ){    
                 	if(object[i].name=="d")
                 		directs++;
                 	else if(object[i].name=="o")
                 		others++;
+<<<<<<< HEAD
+                //	alert('you have nominated '+ object[i].name);    
+=======
                 	//alert('you have nominated '+ object[i].name);    
+>>>>>>> refs/remotes/origin/master
                // 	alert(directs);
                 }
+<<<<<<< HEAD
+        }   
+        if ( directs>0 && directs<3){
+        	
+=======
         }  
         var TorF = true;
        if ( directs>0 && directs<3){
         	//request.setParameter("islegal",false);
+>>>>>>> refs/remotes/origin/master
         	alert("you need to nominate at least three direct reports");
         	//window.navigate("nominate.jsp"); 
+<<<<<<< HEAD
+        	return false;
+=======
         	TorF = false;
         	//return false;
+>>>>>>> refs/remotes/origin/master
         }
         if ( others>0 && others<3){
         	//request.setParameter("islegal",false);
         	alert("you need to nominate at least three others");
         	//window.navigate("nominate.jsp"); 
+<<<<<<< HEAD
+        	return false;
+=======
         	TorF = false; 	
         	//return false;
+>>>>>>> refs/remotes/origin/master
         }
+<<<<<<< HEAD
+        
+=======
         return TorF;
+>>>>>>> refs/remotes/origin/master
         $("#nominate").submit();
 }
 </script>
@@ -121,7 +150,11 @@
 <div class="demo-description">
 <p>By default, accordions always keep one section open. To allow for all sections to be be collapsible, set the <code>collapsible</code> option to true. Click on the currently open section to collapse its content pane.</p>
 </div>
+<<<<<<< HEAD
+<input type="button" value="submit" onclick="SelectLeastOne()" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+=======
 <input type="button" value="submit" onclick="SelectLeastOne(this)" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+>>>>>>> refs/remotes/origin/master
 </form>
 </body>
 </html>

@@ -84,7 +84,7 @@ public class CusActionsDAO {
 			Query queryObject = session.createQuery(queryString);
 			return queryObject.list();
 		}catch(RuntimeException re){
-			session.getTransaction().rollback();
+			//session.getTransaction().rollback();
 			re.printStackTrace();
 			throw re;
 		}finally{

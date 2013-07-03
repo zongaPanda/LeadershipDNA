@@ -20,6 +20,8 @@ public class CusActions implements java.io.Serializable {
 
 	/** default constructor */
 	public CusActions() {
+		this.content=" ";
+		this.link=" ";
 	}
 
 	/** full constructor */
@@ -40,6 +42,7 @@ public class CusActions implements java.io.Serializable {
 	}
 
 	public String getContent() {
+		
 		return this.content;
 	}
 
