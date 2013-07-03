@@ -181,6 +181,28 @@
 						<input class="span3" type="text" value="1433119561@qq.com"/>
 					</div>
 				</div>
+				
+				<div class="row">
+					<div class="left">telephone</div>
+					<div style="font-size: 18px;padding: 0 10px;" class="right">
+						<input class="span3" type="text" value="1433119561@qq.com"/>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="left">address</div>
+					<div style="font-size: 18px;padding: 0 10px;" class="right">
+						<input class="span3" type="text" value="Apple Rd."/>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="left">birthday</div>
+					<div style="font-size: 18px;padding: 0 10px;" class="right">
+						<input class="span3" type="text" value="Apple Rd."/>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 
