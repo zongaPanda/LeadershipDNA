@@ -23,42 +23,50 @@
 		});
 	});
 	</script>
-	<script >
-      function SelectLeastOne(){
+	
+		<script >
+      function SelectLeastOne(e){
         object= document.getElementById("nominate"); 
         var directs=0;
         var others=0;
         //boolean islegal=true;
         window.alert(object.length);
-        request.setParameter("isle",false);
-        for (var i=0; i < object.length; i++){
-        	window.alert('hehe');
-        	window.alert('object['+i+'].type='+object[i].type+'     '+object[i].checked);
+        //request.setParameter("isle",false);
+        var len = object.length;
+        var i = 0 ; 
+       // window.alert('hehe');
+        for(i=0; i<len ; i++){
+        	//window.alert('hehe');
+        	//window.alert('object['+i+'].type='+object[i].type+'     '+object[i].checked+'  object\'s name is :'+object[i].value);
                 if ( object[i].type=="checkbox" &&  object[i].checked ){    
-                
                 	if(object[i].name=="d")
                 		directs++;
                 	else if(object[i].name=="o")
                 		others++;
-                	alert('you have nominated '+ object[i].name);    
+                	//alert('you have nominated '+ object[i].name);    
                // 	alert(directs);
                 }
-        }   
-        if ( directs>0 && directs<3){
-        	request.setParameter("islegal",false);
+        }  
+        var TorF = true;
+       if ( directs>0 && directs<3){
+        	//request.setParameter("islegal",false);
         	alert("you need to nominate at least three direct reports");
-        	window.navigate("nominate.jsp"); 
-        	return false;
+        	//window.navigate("nominate.jsp"); 
+        	TorF = false;
+        	//return false;
         }
         if ( others>0 && others<3){
-        	request.setParameter("islegal",false);
+        	//request.setParameter("islegal",false);
         	alert("you need to nominate at least three others");
-        	window.navigate("nominate.jsp"); 
-        	return false;
+        	//window.navigate("nominate.jsp"); 
+        	TorF = false; 	
+        	//return false;
         }
+        return TorF;
         $("#nominate").submit();
 }
 </script>
+
 </head>
 <body>
 <%//session.setAttribute("currentUser", "106860");
@@ -66,15 +74,16 @@
   long uid=Long.parseLong(suid);%>
 <form id="nominate" action="startPlan" method="post">
 <div id="accordion">
+
 	<h3>line manager(mandatory)</h3>
-	<div>
-		<%findRelationship p=new findRelationship();
-		  Employee em=p.findManager(uid);
-		 %>
-		 
-		  <input type="checkbox" name="m" value ="<%=em.getUid() %>" disabled="disabled" checked="checked" ><%=em.getEname() %><br>
-	</div>
+		<div>
+			<%findRelationship p=new findRelationship();
+			  Employee em=p.findManager(uid);
+			 %>
+			  <input type="checkbox" name="m" value ="<%=em.getUid() %>" disabled="disabled" checked="checked" ><%=em.getEname() %><br>
+		</div>
 	<h3>direct reports(optional)</h3>
+	
 	<div id="directs">
 		<% List l=p.findDirects(uid);
 		if(l!=null){
@@ -87,10 +96,10 @@
 		    <% 
 		}
 		}%>
-       
-       
 	</div>
+	
 	<h3>others(optional)</h3>
+	
 	<div id="others">
 		<% List l2=p.findOthers(uid);
 		if(l2!=null){
@@ -107,10 +116,12 @@
 	
 </div>
 
+
+
 <div class="demo-description">
 <p>By default, accordions always keep one section open. To allow for all sections to be be collapsible, set the <code>collapsible</code> option to true. Click on the currently open section to collapse its content pane.</p>
 </div>
-<input type="submit" value="button" onclick="SelectLeastOne()" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+<input type="button" value="submit" onclick="SelectLeastOne(this)" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 </form>
 </body>
 </html>
