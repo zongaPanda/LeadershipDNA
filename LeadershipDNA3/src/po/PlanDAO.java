@@ -62,7 +62,7 @@ public class PlanDAO {
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			// TODO: handle exception
-			session.getTransaction().rollback();
+		//	session.getTransaction().rollback();
 			re.printStackTrace();	
 			throw re;
 		}finally{

@@ -77,4 +77,13 @@
     <url-pattern>/performServlet</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+  <servlet-name>addAction</servlet-name>
+    <servlet-class>servlet.addAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addAction</servlet-name>
+    <url-pattern>/addAction</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

@@ -10,7 +10,7 @@
             <column name="indx" />
             <generator class="identity" />
         </id>
-        <many-to-one name="plan" class="po.Plan" fetch="select">
+        <many-to-one name="plan" class="po.Plan" fetch="select" >
             <column name="pId" />
         </many-to-one>
         <many-to-one name="cusActions" class="po.CusActions" fetch="select">
