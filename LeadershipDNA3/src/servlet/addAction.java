@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
+import javassist.bytecode.Descriptor.Iterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +37,13 @@ public class addAction extends HttpServlet{
 			
 	     String []contents=request.getParameterValues("content");
 	     String []links=request.getParameterValues("link");
+	     
+	     List choAs =caDao.findByPlan(myPlan);
+	     java.util.Iterator dit=choAs.iterator();
+	     while(dit.hasNext()){
+	    	 caDao.delete((ChosenActions)dit.next());
+	     }
+	     
 	     for(int i=0;i<contents.length;i++){
 	    	 if(contents[i]==""&&links[i]==""){
 	    		 continue;
@@ -49,6 +59,7 @@ public class addAction extends HttpServlet{
 	    		 ChosenActions choA=new ChosenActions();
 	    		 choA.setPlan(myPlan);
 	    		 choA.setFinished(false);
+	    		 
 	    		 choA.setCusActions(cusA);
 	    		 //choA.setPid();
 	    		 caDao.save(choA);
@@ -56,18 +67,21 @@ public class addAction extends HttpServlet{
 	     }
 	     
 	     String []cus=request.getParameterValues("cus");
-	     for(int i=0;i<cus.length;i++){
+	     if(cus!=null){
+	       for(int i=0;i<cus.length;i++){
 	    	 CusActions cusA=cDao.findById(Long.parseLong(cus[i]));
 	    	 
-	    	 /*save to chosen actions*/
-    		 ChosenActions choA=new ChosenActions();
-    		 choA.setPlan(myPlan);
-    		 //choA.setPid();
-    		 choA.setFinished(false);
-    		 choA.setCusActions(cusA);
-    		 caDao.save(choA);
+	    	   /*save to chosen actions*/
+    		    ChosenActions choA=new ChosenActions();
+    		 
+    		    choA.setPlan(myPlan);
+    		 
+    		   choA.setFinished(false);
+    		   choA.setCusActions(cusA);
+    		   caDao.save(choA);
+	    	 
+	      }
 	     }
-	     
 	     response.sendRedirect("agreePlan.jsp");
 	}
 }

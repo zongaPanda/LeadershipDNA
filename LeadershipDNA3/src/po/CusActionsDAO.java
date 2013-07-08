@@ -1,4 +1,6 @@
 package po;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -91,5 +93,21 @@ public class CusActionsDAO {
 			session.close();
 		}
 	}
+	
+	public boolean isChosen(CusActions cus,Plan plan){
+		boolean isc=false;
+		ChosenActionsDAO chDao=new ChosenActionsDAO();       
+        List cActions=chDao.findByPlan(plan);
+        Iterator cit=cActions.iterator();
+        while(cit.hasNext()){
+        	ChosenActions ca=(ChosenActions)cit.next();
+        	if(ca.getCusActions().getAid()==cus.getAid()){
+        		
+        		return true;
+        	}
+        }
+		return isc;
+	}
+	
 
 }

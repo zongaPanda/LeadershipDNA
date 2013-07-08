@@ -6,6 +6,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ page import="po.CusActions" %>
 <%@ page import="po.CusActionsDAO" %>
+<%@ page import="po.ChosenActions" %>
+<%@ page import="po.Plan" %>
+<%@ page import="po.PlanDAO" %>
+<%@ page import="po.ChosenActionsDAO" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
         <script src="js/jquery1.83.js" > </script>
@@ -38,7 +42,11 @@
   
   <%session.setAttribute("planID","2");
   //should be set when start the plan or continue reviewing
-     
+     String spid=(String)session.getAttribute("planID");
+     Long pid=Long.parseLong(spid);
+     PlanDAO pDao=new PlanDAO();
+     ChosenActionsDAO chDao=new ChosenActionsDAO();
+     Plan plan=pDao.findById(pid);
   %>
   
   
@@ -110,7 +118,7 @@
               link
             </th>
            <th>
-              add
+              exist
             </th>
             
           </tr>
@@ -134,8 +142,15 @@
             <%=act.getLink() %>
             </td>
             <td>
-             
-              <input type="checkbox" name="cus" value="<%=act.getAid() %>">
+              <%
+              System.out.println(act.getAid()+" isChosen: "+cDao.isChosen(act,plan));
+              if(cDao.isChosen(act,plan)){
+             %> 
+              <input type="checkbox" name="cus" value="<%=act.getAid() %>" checked="checked">
+              <%}
+              else{%>
+              <input type="checkbox" name="cus" value="<%=act.getAid() %>" >
+              <%} %>
             </td>
             
           </tr>
@@ -146,7 +161,7 @@
   </div>
 </div>
 <center>
-<input type="submit" value="ok, I want to submit the plan " class="btn btn-info" >
+<input type="submit" value="ok, I want to go to the next step " class="btn btn-info" >
 </center>
   </form>
     

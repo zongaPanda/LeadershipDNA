@@ -16,6 +16,9 @@
         <property name="isApproved" type="java.lang.Boolean">
             <column name="isApproved" />
         </property>
+        <property name="isConfirmed" type="java.lang.Boolean">
+            <column name="isConfirmed" />
+        </property>
         <property name="finished" type="java.lang.Boolean">
             <column name="finished" />
         </property>

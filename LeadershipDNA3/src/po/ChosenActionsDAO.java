@@ -1,4 +1,6 @@
 package po;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -98,6 +100,42 @@ public class ChosenActionsDAO {
 		}finally{
 			session.close();
 		}
+	}
+	
+	public void agree(Date date,String support,ChosenActions ca){
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			ca.setDueDate(date);
+			ca.setSupport(support);
+			session.update(ca);
+			tx.commit();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}	
+	}
+	
+	public void updateSupport(String support,ChosenActions ca){
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			
+			ca.setSupport(support);
+			session.update(ca);
+			tx.commit();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}	
 	}
 
 }

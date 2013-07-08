@@ -1,5 +1,6 @@
 package po;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -17,12 +18,13 @@ public class ChosenActions implements java.io.Serializable {
 	private Date dueDate;
 	private String support;
 	private Boolean finished;
-	
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 	// Constructors
 
 	/** default constructor */
 	public ChosenActions() {
+		support="";
 	}
 
 	/** full constructor */
@@ -66,14 +68,22 @@ public class ChosenActions implements java.io.Serializable {
 	public void setCusActions(CusActions cusActions) {
 		this.cusActions = cusActions;
 	}
-
+	public String getSDueDate() {
+		if(dueDate!=null)
+		   return sdf.format(this.dueDate);
+		else
+			return "";
+	}
+	
 	public Date getDueDate() {
 		return this.dueDate;
 	}
 
 	public void setDueDate(Date dueDate) {
+		
 		this.dueDate = dueDate;
 	}
+	
 
 	public String getSupport() {
 		return this.support;

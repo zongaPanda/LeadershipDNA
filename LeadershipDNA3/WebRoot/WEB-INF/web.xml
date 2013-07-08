@@ -86,4 +86,31 @@
     <url-pattern>/addAction</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  <servlet-name>agreePlan</servlet-name>
+    <servlet-class>servlet.agreePlan</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>agreePlan</servlet-name>
+    <url-pattern>/agreePlan</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>savePlan</servlet-name>
+    <servlet-class>servlet.savePlan</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>savePlan</servlet-name>
+    <url-pattern>/savePlan</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>approvePlan</servlet-name>
+    <servlet-class>servlet.approvePlan</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>approvePlan</servlet-name>
+    <url-pattern>/approvePlan</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

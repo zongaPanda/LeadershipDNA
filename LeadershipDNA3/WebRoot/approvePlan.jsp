@@ -1,6 +1,7 @@
 <!-- 
-	author:hsz
-	date:2013/7/3
+	author:hsz(carreen)
+	date:2013/7/8
+	this is the manager view of the actions
  -->
 
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
@@ -27,7 +28,7 @@
 
 
   <head> 
-    <title>agree development plan</title>
+    <title>approve plan</title>
     <script>
 	$(function() {
 		$( ".datepicker" ).datepicker({  minDate: 0, maxDate: "+3M " });
@@ -38,8 +39,9 @@
     var index=1;
     function more(){
     	index++;
-    	$('.add').append('<tr id="'+index+'"><td>'+index+'</td><td><input type="text" name="content"></td><td><input type="text" name="link"></td><td><input type="text" class="datepicker"  name="duedate"></td><td><input type="text" name="support"></td><td><button class="btn btn-info" type="button" onClick="removeR('+index+')">delete</button></td></tr >');
-    }
+    	$('.add').append('<tr id="'+index+'"><td>undefined</td><td><input type="text" name="content"></td><td><input type="text" name="link"></td><td><input type="text" class="datepicker"  name="duedate2"></td><td><input type="text" name="support2"></td><td></tr >');
+    	$( ".datepicker" ).datepicker({ dateFormat: "yy-mm-dd" });
+    }                                                                                                                                                 
     function removeR(id){
     	$("#"+id).remove();
     	//$(this).parents("tr").remove();
@@ -57,7 +59,7 @@
     
     <script >
    function submitFun(act)
-   {	 alert(act);  
+   {	 //alert(act);  
        document.getElementById("review").action=act;
 	   //$("#review").action = act;
 	  
@@ -137,7 +139,7 @@
             </th>
             <td>
             
-              <input type="text" class="datepicker"  name="duedate" value="<%=ca.getSDueDate()%>">
+            <%=ca.getSDueDate()%>
               
             </td>
             <td>
@@ -159,15 +161,15 @@
         </tbody>
       </table>
       
-     <!--   <button class="btn btn-info" type="button" onClick="more()">add some more</button>-->
+      <button class="btn btn-info" type="button" onClick="more()">add some more</button>
     </div>
     
   </div>
 </div>
 <center>
 
-<button  class="btn" onclick="submitFun('savePlan');">save but not submit</button>
-<button  class="btn btn-info" onclick="submitFun('agreePlan');">ok, I'd like to apply for the approval from my manager</button>
+<button  class="btn" onclick="submitFun('approvePlan');">approve</button>
+<button  class="btn btn-info" onclick="submitFun('notApprovePlan.jsp');">save but not approve</button>
 </center>
   </form>
    
