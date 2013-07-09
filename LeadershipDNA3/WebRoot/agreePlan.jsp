@@ -30,8 +30,9 @@
     <title>agree development plan</title>
     <script>
 	$(function() {
-		$( ".datepicker" ).datepicker({  minDate: 0, maxDate: "+3M " });
-		$( ".datepicker" ).datepicker( "option", "altFormat", "yy-mm-dd" );
+		$( ".datepicker" ).datepicker({  minDate: 0, maxDate: "+3M " ,dateFormat: "yy-mm-dd" });
+		//$( ".datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+		//$( ".datepicker" ).datepicker({ dateFormat: "yy-mm-dd" });
 	});
 	</script>
     <script>
@@ -112,9 +113,9 @@
             <th>
               support
             </th>
-        <!--     <th>
+             <th>
               edit
-            </th> -->
+            </th> 
           </tr>
         </thead>
         <tbody class="add">
@@ -127,7 +128,7 @@
           <tr id=<%= indx%>>
             <td>
              <%=ca.getCusActions().getAid() %> 
-             <input type="hidden" name="cid" value=<%=ca.getIndx() %>>
+             
             </td>
             <td>
             <%=ca.getCusActions().getContent() %>
@@ -136,17 +137,20 @@
              <%=ca.getCusActions().getLink() %>
             </th>
             <td>
-            
-              <input type="text" class="datepicker"  name="duedate" value="<%=ca.getSDueDate()%>">
               
+              <input type="text" class="datepicker"  name="duedate" value="<%=ca.getSDueDate() %>" >
+              <input type="hidden" name="cid" value=<%=ca.getIndx() %>>
+                           
             </td>
             <td>
-              <input type="text" name="support"  value="<%=ca.getSupport()%>">
+             
+              <input type="text" name="support" value="<%=ca.getSupport()%>" >
+              
             </td>
-        <!--      <td>
+              <td>
               
               <button class="btn btn-info" type="button" onClick="removeR(<%=indx%>)">delete</button>
-            </td>-->
+            </td>
             
           </tr >
           <%

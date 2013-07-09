@@ -69,10 +69,15 @@ public class ChosenActions implements java.io.Serializable {
 		this.cusActions = cusActions;
 	}
 	public String getSDueDate() {
-		if(dueDate!=null)
+		
+		if(dueDate!=null){
+		  
+		  // System.out.println("po.ChosenActions dueDate "+sdf.format(this.dueDate)); 
 		   return sdf.format(this.dueDate);
+		}
 		else
 			return "";
+		
 	}
 	
 	public Date getDueDate() {

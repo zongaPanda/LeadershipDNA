@@ -1,6 +1,7 @@
 package po;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -82,7 +83,19 @@ public class ChosenActionsDAO {
 	public List findByPlan(Object plan) {
 		return findByProperty(PLAN, plan);
 	}
-
+    
+	public ChosenActions findFromChos(List chos,CusActions cus){
+		ChosenActions c=null;
+		Iterator it=chos.iterator();
+		while(it.hasNext()){
+			ChosenActions cA=(ChosenActions)it.next();
+			if(cA.getCusActions().getAid()==cus.getAid()){
+				return cA;
+			}
+		}
+		return c;
+	}
+	
 	public List findByFinished(Object finished) {
 		return findByProperty(FINISHED, finished);
 	}

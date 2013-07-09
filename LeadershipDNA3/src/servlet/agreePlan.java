@@ -46,6 +46,7 @@ public class agreePlan extends HttpServlet{
 			  Long cid=Long.parseLong(scid[i]);
 			  ChosenActions ca=caDao.findById(cid);
 			  caDao.agree(date, support[i], ca);//agree on 2 things
+			  System.out.println(i+" servlet.agreePlan support "+support[i]);
 			  
 			}catch(Exception e){
 				e.printStackTrace();

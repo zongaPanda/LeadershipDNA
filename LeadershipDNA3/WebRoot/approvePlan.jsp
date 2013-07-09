@@ -40,7 +40,8 @@
     function more(){
     	index++;
     	$('.add').append('<tr id="'+index+'"><td>undefined</td><td><input type="text" name="content"></td><td><input type="text" name="link"></td><td><input type="text" class="datepicker"  name="duedate2"></td><td><input type="text" name="support2"></td><td></tr >');
-    	$( ".datepicker" ).datepicker({ dateFormat: "yy-mm-dd" });
+    	
+    	$( ".datepicker" ).datepicker({  minDate: 0, maxDate: "+3M " ,dateFormat: "yy-mm-dd" });
     }                                                                                                                                                 
     function removeR(id){
     	$("#"+id).remove();
@@ -168,8 +169,8 @@
 </div>
 <center>
 
-<button  class="btn" onclick="submitFun('approvePlan');">approve</button>
-<button  class="btn btn-info" onclick="submitFun('notApprovePlan.jsp');">save but not approve</button>
+<button  class="btn" onclick="submitFun('approvePlan');">save and approve</button>
+<button  class="btn btn-info" onclick="submitFun('notApprovePlan');">save but not approve</button>
 </center>
   </form>
    

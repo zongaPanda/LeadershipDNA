@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javassist.bytecode.Descriptor.Iterator;
@@ -38,11 +39,11 @@ public class addAction extends HttpServlet{
 	     String []contents=request.getParameterValues("content");
 	     String []links=request.getParameterValues("link");
 	     
-	     List choAs =caDao.findByPlan(myPlan);
+	/*     List choAs =caDao.findByPlan(myPlan);
 	     java.util.Iterator dit=choAs.iterator();
 	     while(dit.hasNext()){
 	    	 caDao.delete((ChosenActions)dit.next());
-	     }
+	     }*/
 	     
 	     for(int i=0;i<contents.length;i++){
 	    	 if(contents[i]==""&&links[i]==""){
@@ -66,12 +67,24 @@ public class addAction extends HttpServlet{
 	    	 }
 	     }
 	     
+	     List chosens=caDao.findByPlan(myPlan);
 	     String []cus=request.getParameterValues("cus");
 	     if(cus!=null){
 	       for(int i=0;i<cus.length;i++){
 	    	 CusActions cusA=cDao.findById(Long.parseLong(cus[i]));
 	    	 
-	    	   /*save to chosen actions*/
+	    	 /*find something chosen before is unchecked this time*/
+	    	    if(cDao.isChosen(cusA, myPlan)){
+	    	    	//
+	    	    	ChosenActions ch=caDao.findFromChos(chosens, cusA);
+	    	    	chosens.remove(ch);
+	    	    	
+	    	    	
+	    	    	continue;
+	    	    }
+	    	   
+	    	    /*if something hasn't been chosen is checked, save it to chosen actions*/
+	    	 
     		    ChosenActions choA=new ChosenActions();
     		 
     		    choA.setPlan(myPlan);
@@ -81,6 +94,15 @@ public class addAction extends HttpServlet{
     		   caDao.save(choA);
 	    	 
 	      }
+	       /*if something chosen before is unchecked this time, delete it*/
+	       if(!chosens.isEmpty()){
+	    	   @SuppressWarnings("rawtypes")
+			java.util.Iterator it=chosens.iterator();
+	    	   while(it.hasNext()){
+	    		   caDao.delete((ChosenActions)it.next());
+	    	   }
+	    	   
+	       }
 	     }
 	     response.sendRedirect("agreePlan.jsp");
 	}

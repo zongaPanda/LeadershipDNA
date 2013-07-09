@@ -113,4 +113,13 @@
     <url-pattern>/approvePlan</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  <servlet-name>notApprovePlan</servlet-name>
+    <servlet-class>servlet.notApprovePlan</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>notApprovePlan</servlet-name>
+    <url-pattern>/notApprovePlan</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
