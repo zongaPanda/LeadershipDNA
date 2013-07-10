@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
@@ -21,42 +23,61 @@ public class savePlan extends HttpServlet{
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-	throws ServletException, IOException {
-		
-		//String action=request.getParameter("action");
-		
-		ChosenActionsDAO caDao=new ChosenActionsDAO();
-		
-		
-		HttpSession hSession=request.getSession();
-		String spid=(String)hSession.getAttribute("planID");
-		Long pid=Long.parseLong(spid);
-		  
-		String []scid=request.getParameterValues("cid");
-		String []sdate=request.getParameterValues("duedate");
-		String []support=request.getParameterValues("support");
-		System.out.println("date.length "+sdate.length);
-		if(scid!=null){
-		  for(int i=0;i<scid.length;i++){
-			try{
-			Date date=null;	
-			if(sdate[i]!="")	{
-			  date=sdf.parse(sdate[i]);
+			throws ServletException, IOException {
+				
+				//String action=request.getParameter("action");
+				
+				ChosenActionsDAO caDao=new ChosenActionsDAO();
+				
+				
+				HttpSession hSession=request.getSession();
+				String spid=(String)hSession.getAttribute("planID");
+				Long pid=Long.parseLong(spid);
+				 
+				
+				  
+				  PlanDAO pDao=new PlanDAO();
+				  Plan plan=pDao.findById(pid);
+				  
+				
+				String []scid=request.getParameterValues("cid");
+				String []sdate=request.getParameterValues("duedate");
+				String []support=request.getParameterValues("support");
+				List lastChosens=caDao.findByPlan(plan);
+				//System.out.println("date.length "+sdate.length);
+				if(scid!=null){
+				  for(int i=0;i<scid.length;i++){
+					try{
+					Date date=null;	
+					if(sdate[i]!="")	{
+					  date=sdf.parse(sdate[i]);
+					  }
+					  Long cid=Long.parseLong(scid[i]);
+					  ChosenActions ca=caDao.findById(cid);
+					  caDao.agree(date, support[i], ca);//agree on 2 things
+					
+					  
+					  ChosenActions pca=caDao.findFromChos(lastChosens, cid);
+					  lastChosens.remove(pca);
+					
+					}catch(Exception e){
+						e.printStackTrace();
+						continue;
+					}
+					
+					
+				  }
+				  if(!lastChosens.isEmpty()){
+					  
+					  Iterator it=lastChosens.iterator();
+					  while(it.hasNext()){
+					     caDao.delete((ChosenActions)it.next());
+					  }
+				  }
+				}
+				
+				  
+				  
 			}
-			  Long cid=Long.parseLong(scid[i]);
-			  ChosenActions ca=caDao.findById(cid);
-			  caDao.agree(date, support[i], ca);//agree on 2 things
-			  
-			}catch(Exception e){
-				e.printStackTrace();
-				continue;
-			}
-			
-		
-		  }
-		}
-		
-		  
-	}
 }
 

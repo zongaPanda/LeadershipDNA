@@ -31,8 +31,7 @@
     <script>
 	$(function() {
 		$( ".datepicker" ).datepicker({  minDate: 0, maxDate: "+3M " ,dateFormat: "yy-mm-dd" });
-		//$( ".datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-		//$( ".datepicker" ).datepicker({ dateFormat: "yy-mm-dd" });
+		
 	});
 	</script>
     <script>

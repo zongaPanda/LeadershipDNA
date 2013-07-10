@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
@@ -31,10 +33,17 @@ public class agreePlan extends HttpServlet{
 		HttpSession hSession=request.getSession();
 		String spid=(String)hSession.getAttribute("planID");
 		Long pid=Long.parseLong(spid);
+		 
+		/*submit and confirm plan after which the actions could not be edited any more*/
 		  
+		  PlanDAO pDao=new PlanDAO();
+		  Plan plan=pDao.findById(pid);
+		  pDao.doConfirm(plan);
+		
 		String []scid=request.getParameterValues("cid");
 		String []sdate=request.getParameterValues("duedate");
 		String []support=request.getParameterValues("support");
+		List lastChosens=caDao.findByPlan(plan);
 		//System.out.println("date.length "+sdate.length);
 		if(scid!=null){
 		  for(int i=0;i<scid.length;i++){
@@ -42,12 +51,15 @@ public class agreePlan extends HttpServlet{
 			Date date=null;	
 			if(sdate[i]!="")	{
 			  date=sdf.parse(sdate[i]);
-			}
+			  }
 			  Long cid=Long.parseLong(scid[i]);
 			  ChosenActions ca=caDao.findById(cid);
 			  caDao.agree(date, support[i], ca);//agree on 2 things
-			  System.out.println(i+" servlet.agreePlan support "+support[i]);
+			
 			  
+			  ChosenActions pca=caDao.findFromChos(lastChosens, cid);
+			  lastChosens.remove(pca);
+			
 			}catch(Exception e){
 				e.printStackTrace();
 				continue;
@@ -55,13 +67,15 @@ public class agreePlan extends HttpServlet{
 			
 			
 		  }
+		  if(!lastChosens.isEmpty()){
+			  
+			  Iterator it=lastChosens.iterator();
+			  while(it.hasNext()){
+			     caDao.delete((ChosenActions)it.next());
+			  }
+		  }
 		}
-		/*submit and confirm plan after which the actions could not be edited any more*/
-		  
-		  PlanDAO pDao=new PlanDAO();
-		  Plan plan=pDao.findById(pid);
-		//  System.out.println(plan.getIsConfirmed());
-		  pDao.doConfirm(plan);
+		
 		  
 		  
 	}

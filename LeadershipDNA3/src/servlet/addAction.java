@@ -44,7 +44,7 @@ public class addAction extends HttpServlet{
 	     while(dit.hasNext()){
 	    	 caDao.delete((ChosenActions)dit.next());
 	     }*/
-	     
+	     List chosens=caDao.findByPlan(myPlan);
 	     for(int i=0;i<contents.length;i++){
 	    	 if(contents[i]==""&&links[i]==""){
 	    		 continue;
@@ -64,10 +64,13 @@ public class addAction extends HttpServlet{
 	    		 choA.setCusActions(cusA);
 	    		 //choA.setPid();
 	    		 caDao.save(choA);
+	    		 ChosenActions pchoA=caDao.findFromChos(chosens, cusA);
+	    		 chosens.remove(pchoA);
+	    		 
 	    	 }
 	     }
 	     
-	     List chosens=caDao.findByPlan(myPlan);
+	     
 	     String []cus=request.getParameterValues("cus");
 	     if(cus!=null){
 	       for(int i=0;i<cus.length;i++){

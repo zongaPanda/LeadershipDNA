@@ -96,6 +96,19 @@ public class ChosenActionsDAO {
 		return c;
 	}
 	
+	public ChosenActions findFromChos(List chos,long cid){
+		ChosenActions c=null;
+		Iterator it=chos.iterator();
+		while(it.hasNext()){
+			ChosenActions cA=(ChosenActions)it.next();
+			if(cA.getIndx()==cid){
+				return cA;
+			}
+		}
+		return c;
+	}
+	
+	
 	public List findByFinished(Object finished) {
 		return findByProperty(FINISHED, finished);
 	}
