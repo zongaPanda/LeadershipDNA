@@ -1,90 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.4" 
-	xmlns="http://java.sun.com/xml/ns/j2ee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
-	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
   <welcome-file-list>
     <welcome-file>staticHead.jsp</welcome-file>
   </welcome-file-list>
-    <servlet>
-  <servlet-name>navigate</servlet-name>
-  <servlet-class>servlet.navigate</servlet-class>
+  <servlet>
+    <servlet-name>navigate</servlet-name>
+    <servlet-class>servlet.navigate</servlet-class>
   </servlet>
   <servlet-mapping>
-  <servlet-name>navigate</servlet-name>
-  <url-pattern>/navigate</url-pattern>
+    <servlet-name>navigate</servlet-name>
+    <url-pattern>/navigate</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>MailSender</servlet-name>
-  	<servlet-class>servlet.MailSender</servlet-class>
+    <servlet-name>MailSender</servlet-name>
+    <servlet-class>servlet.MailSender</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>MailSender</servlet-name>
-  	<url-pattern>/MailSender</url-pattern>
+    <servlet-name>MailSender</servlet-name>
+    <url-pattern>/MailSender</url-pattern>
   </servlet-mapping>
-    <servlet>
-  	<servlet-name>checklogin</servlet-name>
-  	<servlet-class>servlet.checklogin</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>checklogin</servlet-name>
-  	<url-pattern>/checklogin</url-pattern>
-  </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>startPlan</servlet-name>
-  	<servlet-class>servlet.startPlan</servlet-class>
+    <servlet-name>checklogin</servlet-name>
+    <servlet-class>servlet.checklogin</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>startPlan</servlet-name>
-  	<url-pattern>/startPlan</url-pattern>
+    <servlet-name>checklogin</servlet-name>
+    <url-pattern>/checklogin</url-pattern>
   </servlet-mapping>
-  
-      <servlet>
-  	<servlet-name>CheckLicense</servlet-name>
-  	<servlet-class>servlet.CheckLicense</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>CheckLicense</servlet-name>
-  	<url-pattern>/CheckLicense</url-pattern>
-  </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>CheckPassword</servlet-name>
-  	<servlet-class>servlet.CheckPassword</servlet-class>
+    <servlet-name>startPlan</servlet-name>
+    <servlet-class>servlet.startPlan</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>CheckPassword</servlet-name>
-  	<url-pattern>/CheckPassword</url-pattern>
+    <servlet-name>startPlan</servlet-name>
+    <url-pattern>/startPlan</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>Logout</servlet-name>
-  	<servlet-class>servlet.Logout</servlet-class>
+    <servlet-name>CheckLicense</servlet-name>
+    <servlet-class>servlet.CheckLicense</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Logout</servlet-name>
-  	<url-pattern>/Logout</url-pattern>
+    <servlet-name>CheckLicense</servlet-name>
+    <url-pattern>/CheckLicense</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  <servlet-name>performServlet</servlet-name>
+    <servlet-name>CheckPassword</servlet-name>
+    <servlet-class>servlet.CheckPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckPassword</servlet-name>
+    <url-pattern>/CheckPassword</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>servlet.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>performServlet</servlet-name>
     <servlet-class>servlet.performServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>performServlet</servlet-name>
     <url-pattern>/performServlet</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
-  <servlet-name>addAction</servlet-name>
+  <servlet>
+    <servlet-name>addAction</servlet-name>
     <servlet-class>servlet.addAction</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>addAction</servlet-name>
     <url-pattern>/addAction</url-pattern>
   </servlet-mapping>
+
   
   <servlet>
   <servlet-name>agreePlan</servlet-name>
@@ -122,4 +113,22 @@
     <url-pattern>/notApprovePlan</url-pattern>
   </servlet-mapping>
   
+
+  <servlet>
+    <servlet-name>executeServlet</servlet-name>
+    <servlet-class>servlet.executeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>executeServlet</servlet-name>
+    <url-pattern>/executeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>executeServlet2</servlet-name>
+    <servlet-class>servlet.executeServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>executeServlet2</servlet-name>
+    <url-pattern>/executeServlet2</url-pattern>
+  </servlet-mapping>
 </web-app>
+

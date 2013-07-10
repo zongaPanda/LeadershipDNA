@@ -1,7 +1,9 @@
 package po;
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.Iterator;
+
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -13,6 +15,7 @@ public class ChosenActionsDAO {
 	public static final String FINISHED = "finished";
 	public static final String PID = "pId";
 	public static final String PLAN = "plan";
+	public static final String DUEDATE = "dueDate";
 	
 	public void save(ChosenActions chosenaction){
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
@@ -128,6 +131,7 @@ public class ChosenActionsDAO {
 		}
 	}
 	
+
 	public void agree(Date date,String support,ChosenActions ca){
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
@@ -153,8 +157,46 @@ public class ChosenActionsDAO {
 			
 			ca.setSupport(support);
 			session.update(ca);
+			tx.commit();} catch (Exception e) {
+				// TODO: handle exception
+				tx.rollback();
+				e.printStackTrace();
+			}finally{
+				session.close();
+			}	
+		}
+
+	public List findAllAndOrderByProperty(String propertyName,  
+            boolean isSequence)  {  
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		try {
+        String queryString = "from ChosenActions as model order by model." + propertyName;  
+        if (isSequence == false)  {  
+            queryString = queryString + " DESC";  
+        }  
+  
+        Query queryObject = session.createQuery(queryString);  
+        return queryObject.list();  
+		} catch (RuntimeException re) {
+			// TODO: handle exception
+		//	session.getTransaction().rollback();
+			re.printStackTrace();	
+			throw re;
+		}finally{
+			session.close();
+		}
+    }  
+	
+	
+	
+	public void updateFinish(ChosenActions chosenaction){
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			chosenaction.setFinished(true);
+			session.update(chosenaction);
 			tx.commit();
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			tx.rollback();

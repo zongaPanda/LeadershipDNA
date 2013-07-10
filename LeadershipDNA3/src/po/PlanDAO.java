@@ -97,6 +97,7 @@ public class PlanDAO {
 		}
 	}
 	
+
 	public void doConfirm(Plan plan){
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
@@ -130,5 +131,23 @@ public class PlanDAO {
 			session.close();
 		}	
 	}
+
+
+	public void updateFinish(Plan plan){
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			plan.setFinished(true);
+			session.update(plan);
+			tx.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}	
+	}
+	
 
 }

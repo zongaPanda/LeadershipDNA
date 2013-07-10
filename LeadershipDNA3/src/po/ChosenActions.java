@@ -20,6 +20,10 @@ public class ChosenActions implements java.io.Serializable {
 	private Boolean finished;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
+	String yes = "yes";
+	String no = "no";
+
+
 	// Constructors
 
 	/** default constructor */
@@ -54,11 +58,13 @@ public class ChosenActions implements java.io.Serializable {
 	public void setPlan(Plan plan) {
 		this.plan = plan;
 	}
-	public long getPid(){
+
+	public long getPid() {
 		return plan.getPid();
 	}
-	public void setPid(){
-		this.pId=plan.getPid();
+
+	public void setPid() {
+		this.pId = plan.getPid();
 	}
 
 	public CusActions getCusActions() {
@@ -68,17 +74,14 @@ public class ChosenActions implements java.io.Serializable {
 	public void setCusActions(CusActions cusActions) {
 		this.cusActions = cusActions;
 	}
+
 	public String getSDueDate() {
-		
-		if(dueDate!=null){
-		  
-		  // System.out.println("po.ChosenActions dueDate "+sdf.format(this.dueDate)); 
-		   return sdf.format(this.dueDate);
-		}
+		if (dueDate != null)
+			return sdf.format(this.dueDate);
 		else
 			return "";
-		
 	}
+
 	
 	public Date getDueDate() {
 		return this.dueDate;
@@ -104,6 +107,13 @@ public class ChosenActions implements java.io.Serializable {
 
 	public void setFinished(Boolean finished) {
 		this.finished = finished;
+	}
+
+	public String getifFinished() {
+		if (this.finished) {
+			return yes;
+		} else
+			return no;
 	}
 
 }

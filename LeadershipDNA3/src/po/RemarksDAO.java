@@ -77,6 +77,7 @@ public class RemarksDAO {
 		return findByProperty(IS_READ, isRead);
 	}
 	
+	
 	public List findAll(){
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
 		try{
@@ -91,5 +92,22 @@ public class RemarksDAO {
 			session.close();
 		}
 	}
+	
+	public void updateIsRead(Remarks remark){
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			remark.setIsRead(true);
+			session.update(remark);
+			tx.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}	
+	}
+	
 
 }
