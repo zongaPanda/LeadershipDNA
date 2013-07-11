@@ -22,5 +22,29 @@
         <property name="license" type="java.lang.String">
             <column name="license" length="45" />
         </property>
+        <property name="sex" type="java.lang.String">
+            <column name="sex" length="1" />
+        </property>
+        <property name="telephone" type="java.lang.String">
+            <column name="telephone" length="11" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="address" length="45" />
+        </property>
+        <property name="birthday" type="java.util.Date">
+            <column name="birthday" length="45" />
+        </property>
+        <property name="qq" type="java.lang.String">
+            <column name="qq" length="10" />
+        </property>
+        <property name="msn" type="java.lang.String">
+            <column name="msn" length="45" />
+        </property>
+        <property name="education" type="java.lang.String">
+            <column name="education" length="45" />
+        </property>   
+        <property name="ifincycle" type="java.lang.Boolean">
+            <column name="ifincycle" />
+        </property>
     </class>
 </hibernate-mapping>

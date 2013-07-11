@@ -35,10 +35,8 @@
 				$('#rightDIV2').show(500);	
 				$('#flow1').css('color','black');
 				$('#flow2').css("color","#CB1B1E");
-				<%//MailSender.send("168chengyuxing@sina.com", "1433119561@qq.com", "hello", "3this is a test , cyx. Your license is 123456789");%>
 				
-				
-			}
+				}
 			
 			function hiden2(e){
 				var inputLicense = $("#input_license");
@@ -89,42 +87,16 @@
 
 				} 
 			}
-			
-			
-			
-			$._messengerDefaults = {
-					extraClasses: 'messenger-fixed messenger-theme-future messenger-on-top messenger-on-right'
-				}
-			
-			function showMsg(e){
-				var msg;
-
-				msg = $.globalMessenger().post({
-				  message: 'You hava a new message',
-				  type: 'info',
-				  actions: {
-				    cancel: {
-				      label: 'cancel launch',
-				      action: function() {
-				        return msg.update({
-				          message: 'Thermonuclear war averted',
-				          type: 'success',
-				          actions: false
-				        });
-				      }
-				    }
-				  }
-				});
-
-			}
 		</script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>register</title>
+<title>Leadership DNA</title>
+<link rel="shortcut icon" href="img/sc.ico" />
 </head>
 
 <body>
-<div class="container"  style="height:768px;width:1366px;padding-top: 0px;background-color: #DCEAF4;">
+<%@ include file="staticTitle.jsp" %>
+<div class="container"  style="height:768px;width:1366px;padding-top: 0px;background-color: white;">
 	<div style="text-align: center;max-height: 40px;">
 	<h1>Register into the system</h1>
 	</div>
@@ -142,7 +114,7 @@
 	</div>
 
 	<form id="PasswordForm" method="post" action="./CheckPassword">
-	<div id="rightDIV3" class="container" style="background-color:#F2F2F2;border:2px solid #E1E1E1; height:688px;width:900px;margin-left: 0px;margin-left: 20px;float: left;">
+	<div id="rightDIV3" class="container" style="background-color:#fefefe;border:2px solid #E1E1E1; height:688px;width:900px;margin-left: 0px;margin-left: 20px;float: left;">
 		<div style="max-width: 850px;"><legend style="margin-left: 30px;">username and password</legend></div>
 		<div style="margin-left: 30px;">
 			<label style="margin-top: 30px;font-size: 20px;">enter your password</label>

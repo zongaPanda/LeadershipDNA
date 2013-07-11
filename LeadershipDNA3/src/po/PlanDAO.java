@@ -41,6 +41,21 @@ public class PlanDAO {
 		}	
 	}
 	
+	public void update(Plan plan){
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			session.update(plan);
+			tx.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+	}
+	
 	public Plan findById(java.lang.Long id) {
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
 		try {
@@ -103,6 +118,23 @@ public class PlanDAO {
 		Transaction tx = session.beginTransaction();
 		try {
 			plan.setIsConfirmed(true);
+			session.update(plan);
+			tx.commit();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}	
+	}
+	
+	public void disConfirm(Plan plan){
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			plan.setIsConfirmed(false);
 			session.update(plan);
 			tx.commit();
 			

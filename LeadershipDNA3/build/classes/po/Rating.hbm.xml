@@ -25,6 +25,9 @@
         <property name="finished" type="java.lang.Boolean">
             <column name="finished" />
         </property>
+        <property name="volid" type="java.lang.Boolean">
+        	<column name="volid"></column>
+        </property>
         <set name="answerses" inverse="true">
             <key>
                 <column name="rindx" />

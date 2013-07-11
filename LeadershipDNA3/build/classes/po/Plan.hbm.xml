@@ -10,7 +10,7 @@
             <column name="pId" />
             <generator class="identity" />
         </id>
-        <property name="targetId" type="java.lang.String">
+        <property name="targetId" type="java.lang.Long">
             <column name="targetId" length="6" not-null="true" />
         </property>
         <property name="isApproved" type="java.lang.Boolean">

@@ -1,483 +1,570 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
     pageEncoding="utf8"%>
+<%@ page import="po.*" %>
+<%@ page import="method.*" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>Insert title here</title>
+<title>Leadership DNA</title>
 </head>
+		<script src="js/jquery1.83.js" > </script>
+        <script src="js/bootstrap-transition.js"></script>
+        <script src="js/bootstrap-modal.js"></script>
+        <script src="js/bootstrap-button.js"></script>
+        <script src="js/messenger.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/messenger.css">
+        <link rel="stylesheet" type="text/css" href="css/messenger-theme-future.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="shortcut icon" href="img/sc.ico" />
 <style type="text/css">
-		body {
-			/*background-color: rgb(220,220,220);*/
-			padding: 0;
-			margin: 0;
-			font-size: 16px;
-			font-family: sans-serif;
-			/*background-color: #222222;
-		  background-image: -webkit-linear-gradient(180deg, transparent 55%, #272727  45%);
-		  background-image: -o-linear-gradient(180deg, transparent 50%, #272727  50%);
-		  background-image: -ms-linear-gradient(180deg, transparent 50%, #272727  50%);
-		  background-image: linear-gradient(90deg, transparent 50%, #272727  50%);
-		  background-size: 30px 30px;
-		  letter-spacing: 0.09em;*/
-		}
-		.clearfix:after {
-			content: "";
-			display: block;
-			height: 0;
-			width: 0;
-			clear: both;
-		}
-		.admin-panel {
-			width: 990px;
-			margin: 50px auto;
-		}
-		/*slidebar侧边栏*/
-		.slidebar {
-			width: 20%;
-			min-height: 690px;
-			float: left;
-			border-right: 1px solid rgb(235,235,235);
-			background-color: rgb(247,247,247);
-		}
-		.slidebar .logo {
-			height: 145px;
-			border-bottom: 1px solid rgb(235,235,235);
-		}
-		.slidebar ul {
-			padding: 0;
-			margin:0;
-		}
-		.slidebar li {
-			list-style-type: none;
-			margin: 0;
-			position: relative;
-		}
-		.slidebar li:before {
-			content: "";
-			font-family: 'icomoon';
-			speak: none;
-			font-weight: normal;
-			font-variant: normal;
-			text-transform: none;
-			position: absolute;
-			display: block;
-			line-height: 40px;
-			color: rgb(102,102,102);
-			right: 20px;
-			-webkit-font-smoothing: antialiased;
-		}
-		/*插入icon图标*/
-		.slidebar li:nth-child(1):before {content: "\63";}
-		.slidebar li:nth-child(2):before {content: "\64";}
-		.slidebar li:nth-child(3):before {content: "\62";}
-		.slidebar li:nth-child(4):before {content: "\65";}
-		.slidebar li:nth-child(5):before {content: "\74";}
-		.slidebar li:nth-child(6):before {content: "\66";}
-		.slidebar li:nth-child(7):before {content: "\67";}
-		.slidebar li:nth-child(8):before {content: "\68";}
-		.slidebar li:nth-child(9):before {content: "\69";}
-		.slidebar li:nth-child(10):before {content: "\6a";}
-		.slidebar li:nth-child(11):before {content: "\75";}
+	.box{
+		position:relative;
+		border: 1px solid #d5d5d5;
+		width: 1000px;
+		display:block;
+		height: 760px;
+		margin-top:50px;
+		margin-left:350px;
+		border-radius:0 120px 120px 165px / 0 20px 20px 165px;
+		background: -webkit-gradient(linear, 0% 20%, 0% 100%, from(#fff), to(#f5f7f7));	
 		
-		.slidebar ul a {
-			color: rgb(140,140,140);
-			text-decoration: none;
-			font:16px/40px helvetica,verdana,sans-serif;
-			box-sizing:border-box;
-			border-bottom: 1px solid rgb(235,235,235);
-			display: block;
-			box-shadow:inset 0 1px 0 rgb(255,255,255);
-			text-indent: 20px;
-			text-transform: capitalize;
+	}
+	
+	.box > b{
+		position:absolute;
+		top: -15px;
+		left: -15px;
+		color:#e6e6e6;
+		text-shadow:0 0 5px #770101;
+		display:inline-block;
+		border:1px solid #5b0404;
+		border-radius: 0 0 60px 0 / 0 0 60px 0;
+		background-color: black;
+		font-size: 40px;
+		padding: 10px 30px 10px 10px;
+		-webkit-transition: all 1s ease;
+	}
+	
+	.box:before{
+		content:'';
+		width: 80px;
+		height: 80px;
+		position : absolute;
+		bottom: 0;
+		left:0;
+		background:-webkit-gradient(linear, 0% 100%, 80% 20%, from(#d5d5d5), to(#fff));
+		border-radius: 0 0 0 40px;
+  		box-shadow:10px -10px 10px rgba(0, 0, 0, 0.3);
+  		-webkit-transform:  rotate(15deg) skew(40deg,10deg) translate(42px,-37px);	
+	}
+	
+	.box:after{
+		  z-index: -1;
+		  position: absolute;
+		  content: "";
+		  right: 35px;
+		  bottom: 3%;
+		  height: 50%;
+		  max-height:400px;
+		  left: 80%;
+		  /*max-width:300px;*/
+		  background: #777; 
+		  box-shadow: 35px 0px 40px #777;
+		  -webkit-transform: rotate(-8deg);
+		  -moz-transform: rotate(-8deg);
+		  -o-transform: rotate(-8deg);
+		  -ms-transform: rotate(-8deg);
+		  transform: rotate(-8deg);
+	}
+	
+	.box:after{
+		  
+	}
+	
+	.yxj{
+		  z-index: -1;
+		  position: absolute;
+		  content: "";
+		  right: 35px;
+		  bottom: 3%;
+		  height: 50%;
+		  max-height:400px;
+		  left: 80%;
+		  /*max-width:300px;*/
+		  
+		  box-shadow: 35px 0px 40px #777;
+		  -webkit-transform: rotate(8deg);
+		  -moz-transform: rotate(-8deg);
+		  -o-transform: rotate(-8deg);
+		  -ms-transform: rotate(-8deg);
+		  transform: rotate(-8deg);
+		  top:3%;
+		  bottom:auto;
+	}
+	
+	.box > b:HOVER {
+		box-shadow: 7px 7px 6px #777;
+		-webkit-transform: translate(-7px,-7px);
+		-moz-transform: rotate(-8deg);
+		-o-transform: rotate(-8deg);
+		-ms-transform: rotate(-8deg);
+		transform: rotate(-8deg);
+		background-color:#353535;
+	}
+	
+	.allPro{
+		margin-left:100px;
+		margin-top:50px;
+		margin-right:50px;
+		height:200px;
+		background-color:#ebebeb;
+		/*border:1px solid blue;*/
+		
+	}
+	
+	.pro{
+		position:relative;
+		height:40px;
+		width:140px;
+		background-color: #FAFAFA; 
+		font-size:26px;
+		-webkit-transform: skew(40deg,0deg);
+		border: 5px solid #b9b9b9;
+		
+	}
+	
+	.pro:HOVER {
+ 		-webkit-animation: turns 1s ease-in-out;
+	}
+	
+	
+	
+	.prob{
+		position:absolute;
+		top:14px;
+		left:65px;
+		font-size:26px;
+		color:#b9b9b9;
+		
+	}
+	
+	.prob:HOVER {
+		-webkit-animation: turnss 1s ease-in-out;
+	}
+	
+	.bigbox{
+		position:relative;
+		margin-left:10px;
+		float:left;
+		height:160px;
+		/*border:1px solid blue;*/
+		
+	}
+	
+	.start{
+		/*border:1px solid red;*/
+		height:200px;
+		width:800px;
+		position:absolute;
+		top:50px;
+		left:100px;
+	}
+	
+	.opt{
+		position:relative;
+		/*border:1px solid black;*/
+		height:90px;
+		width:125px;
+		margin-top:10px;
+		margin-left:20px;
+		margin-right:0px;
+		
+	}
+	
+	.opt a{
+		/*border:1px solid black;*/
+		position:absolute;
+		
+		font-size:14px;
+		color:grey;
+	}
+	
+	.cover{
+		height:22px;
+		width:124px;
+		position:absolute;
+		
+	}
+	
+	@-webkit-keyframes turns {
+		  0%{
+		    -webkit-transform: skew(40deg,0deg) translate(0);
+		  }
+		  10%{
+		    -webkit-transform: skew(40deg,0deg) translate(-10px,0px);
+		  }
+		  30%{
+		    -webkit-transform: skew(40deg,0deg) translate(9px,0px);
+		  }
+		  55%{
+		    -webkit-transform: skew(40deg,0deg) translate(-7px,0px);
+		  }
+		  75%{
+		    -webkit-transform: skew(40deg,0deg) translate(4px,0px);
+		  }
+		  90%{
+		    -webkit-transform: skew(40deg,0deg) translate(-2px,0px);
+		  }
+		  95%{
+		    -webkit-transform: skew(40deg,0deg) translate(1px,0px);
+		  }
+		  100%{
+		    -webkit-transform: skew(40deg,0deg) translate(0);
+		  }
 		}
-		.slidebar li:hover a {
-			background-color: rgb(255,255,255);
-			box-shadow: 1px 0 0 rgb(255,255,255),inset 5px 0 0 -1px rgb(234,83,63);
-		}
-		/*main*/
-		.main {
-			float: left;
-			width: 79%;
-			height: 690px;
-			background-color: rgb(255,255,255);
-			position: relative;
-			font-family: helvetica,verdana,sans-serif;
-		}
-		.main .topbar {
-			border-bottom: 1px solid rgb(235,235,235);
-			margin: 0;
-			padding: 0;
-		}
-		/*topbar顶部按钮栏*/
-		.topbar li {
-			float: right;
-			list-style: none;
-		}
-		.topbar li:first-child {float: left;}
-		.topbar a {
-			font-family: 'icomoon';
-			display: block;
-			line-height: 50px;
-			width: 50px;
-			text-align: center;
-			text-decoration: none;
-			color: rgb(102,102,102);
-			border-left: 1px solid rgb(235,235,235);
-		}
-		.topbar a:hover {
-			background-color: rgb(247,247,247);
-		}
-		.topbar li:first-child a {
-			border: none;
-			border-right: 1px solid rgb(235,235,235);
-		}
-		/*mainContent*/
-		.mainContent h4 {
-			line-height: 1;
-			font-size: 18px;
-			margin: 1.3em 0 1em;
-			margin-left: 17px;
-		}
-		 
-		.mainContent>div {
-			position: absolute;
-			opacity: 0;
-			-webkit-transition:opacity 200ms linear;
-			-moz-transition:opacity 200ms linear;
-			-ms-transition:opacity 200ms linear;
-			transition:opacity 200ms linear;
-		}
-		/*通过opacity来切换不同的选项卡*/
-		.mainContent>div:target {
-			opacity: 1;
-		}
-		.mainContent h2 {
-			margin:1em 30px;
-			color: rgb(234,83,63);
-			font-size: 20px;
-		}
-		.mainContent h2:before {
-			font-family: 'icomoon';
-			content: attr(data-icon);
-			font-weight: normal;
-			font-variant: normal;
-			text-transform: none;
-			line-height: 1;
-			margin-right: 10px;
-			-webkit-font-smoothing: antialiased;
-		}
-		.mainContent div:nth-child(1) h2:before {content: "\63";}
-		.mainContent div:nth-child(2) h2:before {content: "\64";}
-		.mainContent div:nth-child(3) h2:before {content: "\62";}
-		.mainContent div:nth-child(4) h2:before {content: "\65";}
-		.mainContent div:nth-child(5) h2:before {content: "\74";}
-		.mainContent div:nth-child(6) h2:before {content: "\66";}
-		.mainContent div:nth-child(7) h2:before {content: "\67";}
-		.mainContent div:nth-child(8) h2:before {content: "\68";}
-		.mainContent div:nth-child(9) h2:before {content: "\69";}
-		.mainContent div:nth-child(10) h2:before {content: "\6a";}
-		.mainContent div:nth-child(11) h2:before {content: "\75";}
-		 
-		#dashboard>div {
-			border: 1px solid rgb(235,235,235);
-			margin-left: 30px;
-			float: left;
-			border-radius: 5px;
-			min-width: 345px;
-			height: 262px;
-			display: inline-block;
-		}
-		.monitor ul {
-			float: left;
-			padding: 0;
-			margin: 0 31px 0 17px;
-		}
-		.monitor li {
-			list-style:none;
-			font: 600 14px/28px helvetica,verdana,sans-serif;
-			color: rgb(102,102,102);
-			text-transform: capitalize;
-		}
-		.monitor li a {
-			color: rgb(102,102,102);
-			text-transform: capitalize;
-			text-decoration: none;
-		}
-		.monitor li:first-child {
-			border-bottom: 1px dotted rgb(153,153,153);
-		}
-		.discussions .comments {color: rgb(27,106,173);}
-		.discussions .approved {color: rgb(105,174,48);}
-		.discussions .pending {color: rgb(246,129,15);}
-		.discussions .spam {color: rgb(243,47,47);}
-		.monitor .count {
-			color: rgb(27,106,173);
-			text-align: right;
-			font-weight: 600;
-			margin-right: 15px;
-			min-width: 25px;
-			display: inline-block;
-		}
-		.monitor p {
-			color: rgb(128,128,128);
-			margin: 28px 0 18px 17px;
-			display: block;
-			font-weight: 600;
-			font-size: 12px;
-		}
-		.monitor p a {
-			text-decoration: none;
-			color:rgb(27,106,173);
-		}
-		.quick-press form {
-			margin:0 20px 0 13px;
-		}
-		.quick-press input[type="text"] {
-			display: block;
-			width: 100%;
-			-moz-box-sizing:border-box;
-			box-sizing:border-box;
-			height: 35px;
-			line-height: 15px;
-			padding: 10px 0;
-			margin:0 0 7px 0;
-			background-color: rgb(246,246,246);
-			outline: none;
-			border: none;
-			text-indent: 10px;
-		}
-		/*统一各浏览器下placeholder内的字体样式*/
-		.quick-press input[type="text"]::-webkit-input-placeholder {font-size: 14px;}
-		.quick-press input[type="text"]:-moz-input-placeholder {font-size: 14px;}
-		.quick-press input[type="text"]::-moz-input-placeholder {font-size: 14px;}
-		.quick-press input[type="text"]:-ms-input-placeholder {font-size: 14px;}
-		 
-		.quick-press button {
-			margin-top: 13px;
-			border-radius: 5px;
-			text-align: center;
-			line-height: 30px;
-			padding: 0;
-		}
-		.quick-press .save, .quick-press .delet {
-			font-family: 'icomoon';
-			width: 37px;
-			background: -webkit-linear-gradient(top,rgb(246,246,240),rgb(232,232,232));
-			background: -moz-linear-gradient(top,rgb(246,246,240),rgb(232,232,232));
-			background: -ms-linear-gradient(top,rgb(246,246,240),rgb(232,232,232));
-			background: linear-gradient(top,rgb(246,246,240),rgb(232,232,232));
-			border: 1px solid rgb(229,229,229); 
-			color: rgb(102,102,102); 
-			float: left;
-			margin-right: 5px;
-		}
-		.quick-press .save:hover, .quick-press .delet:hover {
-			background: -webkit-linear-gradient(top,rgb(232,232,232),rgb(246,246,240));
-			background: -moz-linear-gradient(top,rgb(232,232,232),rgb(246,246,240));
-			background: -ms-linear-gradient(top,rgb(232,232,232),rgb(246,246,240));
-			background: linear-gradient(top,rgb(232,232,232),rgb(246,246,240));
-		}
-		.quick-press .save:active, .quick-press .delet:active {
-			background: -webkit-linear-gradient(top,rgb(228,228,228),rgb(210,210,210));
-			background: -moz-linear-gradient(top,rgb(228,228,228),rgb(210,210,210));
-			background: -ms-linear-gradient(top,rgb(228,228,228),rgb(210,210,210));
-			background: linear-gradient(top,rgb(228,228,228),rgb(210,210,210));
-		}
-		.quick-press .submit {
-			float: right;
-			width: 70px;
-			border: 1px solid rgb(238,85,64);
-			color: #fff;
-			font-size: 16px;
-			background: -webkit-linear-gradient(top,rgb(245,101,82),rgb(234,83,63));
-			background: -moz-linear-gradient(top,rgb(245,101,82),rgb(234,83,63));
-			background: -ms-linear-gradient(top,rgb(245,101,82),rgb(234,83,63));
-			background: linear-gradient(top,rgb(245,101,82),rgb(234,83,63));
-		}
-		.quick-press .submit:hover {
-			background: -webkit-linear-gradient(top,rgb(220,85,70),rgb(210,65,53));
-			background: -moz-linear-gradient(top,rgb(220,85,70),rgb(210,65,53));
-			background: -ms-linear-gradient(top,rgb(220,85,70),rgb(210,65,53));
-			background: linear-gradient(top,rgb(220,85,70),rgb(210,65,53));
-		}
-		/*logo*/
-		.logo a {
-			width: 88px;
-			height: 88px;
-			display: inline-block;
-			position: relative;
-			left: 50%;
-			top: 50%;
-			margin: -45px 0 0 -45px;
-			border: 1px solid rgb(200,200,200);
-			border-radius: 50%;
-			background-color: rgb(214,214,214);
-		}
-		.logo a:before {
-			content: "A";
-			width: 70px;
-			height: 70px;
-			font: 50px/70px helvetica,verdana,sans-serif;
-			text-align: center;
-			position: absolute;
-			top: 8px;
-			left: 8px;
-			border-radius: 35px;
-			border: 1px solid rgb(210,210,210);
-			display: inline-block;
-			background: -webkit-linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
-			background: -moz-linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
-			background: -ms-linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
-			background: linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
-		}
-		/*statusbar底部功能按钮*/
-		.statusbar {
-			position: absolute;
-			bottom: 0;
-			border-top: 1px solid rgb(235,235,235);
-			width: 100%;
-			padding: 0;
-			margin: 0;
-		}
-		.statusbar li {
-			list-style: none;
-		}
-		.statusbar a {
-			color: rgb(102,102,102);
-			text-decoration: none;
-			text-align: center;
-			display: block;
-		}
-		.statusbar a:hover {
-			background-color: rgb(247,247,247);
-		}
-		.statusbar .profiles-setting, .statusbar .logout {
-			float: right;
-		}
-		.statusbar .profiles-setting a, .statusbar .logout a {
-			font-family: 'icomoon';
-			width: 49px;
-			height: 49px;
-			line-height: 50px;
-			border-left: 1px solid rgb(235,235,235);
-		}
-		@font-face {
-			font-family: 'icomoon';
-			src:url('fonts/icomoon.eot');
-			src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-			url('fonts/icomoon.woff') format('woff'),
-			url('fonts/icomoon.ttf') format('truetype'),
-			url('fonts/icomoon.svg#icomoon') format('svg');
-			font-weight: normal;
-			font-style: normal;
-		}
-
+		
+		@-webkit-keyframes turnss {
+		  0%{
+		    -webkit-transform:  translate(0);
+		  }
+		  10%{
+		    -webkit-transform:  translate(-10px,0px);
+		  }
+		  30%{
+		    -webkit-transform:  translate(9px,0px);
+		  }
+		  55%{
+		    -webkit-transform:  translate(-7px,0px);
+		  }
+		  75%{
+		    -webkit-transform:  translate(4px,0px);
+		  }
+		  90%{
+		    -webkit-transform:  translate(-2px,0px);
+		  }
+		  95%{
+		    -webkit-transform:  translate(1px,0px);
+		  }
+		  100%{
+		    -webkit-transform:  translate(0);
+		  }
+		 }
 </style>
+	
 <body>
 
 	<%@ include file="afterLogin.jsp" %>
-	<div style="width:1000px;height:690px;margin-left:350px;margin-top:50px;">
-  <div class="slidebar">
-    <div class="logo">
-      <a href=""></a>
-    </div>
-    <ul>
-      <li><a href="#dashboard" id="targeted">dashboard</a></li>
-      <li><a href="#posts">posts</a></li>
-      <li><a href="#media">media</a></li>
-      <li><a href="#pages">pages</a></li>
-      <li><a href="#links">links</a></li>
-      <li><a href="#comments">comments</a></li>
-      <li><a href="#widgets">widgets</a></li>
-      <li><a href="#plugins">plugins</a></li>
-      <li><a href="#users">users</a></li>
-      <li><a href="#tools">tools</a></li>
-      <li><a href="#settings">settings</a></li>
-    </ul>
-  </div>
-  <div class="main">
-    <ul class="topbar clearfix">
-      <li><a href="#">q</a></li>
-      <li><a href="#">p</a></li>
-      <li><a href="#">o</a></li>
-      <li><a href="#">f</a></li>
-      <li><a href="#">n</a></li>
-    </ul>
-    <div class="mainContent clearfix">
-      <div id="dashboard">
-        <h2 class="header"><span class="icon"></span>Dashboard</h2>
-          <div class="monitor">
-            <h4>Right Now</h4>
-            <div class="clearfix">
-              <ul class="content">
-                <li>content</li>
-                <li class="posts"><span class="count">179</span><a href="">posts</a></li>
-                <li class="pages"><span class="count">13</span><a href="">pages</a></li>
-                <li class="categories"><span class="count">21</span><a href="">categories</a></li>
-                <li class="tags"><span class="count">305</span><a href="">tags</a></li>
-              </ul>
-              <ul class="discussions">
-                <li>discussions</li>
-                <li class="comments"><span class="count">353</span><a href="">comments</a></li>
-                <li class="approved"><span class="count">319</span><a href="">approved</a></li>
-                <li class="pending"><span class="count">0</span><a href="">pending</a></li>
-                <li class="spam"><span class="count">34</span><a href="">spam</a></li>
-             </ul>
-           </div>
-           <p>Theme <a href="">Twenty Eleven</a> with <a href="">3 widgets</a></p>
-         </div>
-         <div class="quick-press">
-           <h4>Quick Press</h4>
-           <form action="" method="post">
-             <input type="text" name="title" placeholder="Title"/>
-             <input type="text" name="content" placeholder="Content"/>
-             <input type="text" name="tags" placeholder="Tags"/>
-             <button type="button" class="save">l</button>
-             <button type="button" class="delet">m</button>
-             <button type="submit" class="submit" name="submit">Publish</button>
-           </form>
-         </div>
-       </div>
-       <div id="posts">
-         <h2 class="header">posts</h2>
-       </div>
-       <div id="media">
-         <h2 class="header">media</h2>
-       </div>
-       <div id="pages">
-         <h2 class="header">pages</h2>
-       </div>
-       <div id="links">
-         <h2 class="header">links</h2>
-       </div>
-       <div id="comments">
-         <h2 class="header">comments</h2>
-       </div>
-       <div id="widgets">
-         <h2 class="header">widgets</h2>
-       </div>
-       <div id="plugins">
-         <h2 class="header">plugins</h2>
-       </div>
-       <div id="users">
-         <h2 class="header">users</h2>
-       </div>
-       <div id="tools">
-         <h2 class="header">tools</h2>
-       </div>
-       <div id="settings">
-         <h2 class="header">settings</h2>
-       </div>
-     </div>
-     <ul class="statusbar">
-       <li><a href=""></a></li>
-       <li><a href=""></a></li>
-       <li class="profiles-setting"><a href="">s</a></li>
-       <li class="logout"><a href="">k</a></li>
-     </ul>
-   </div>
-   </div>
+	<%
+		currentUser = (String)session.getAttribute("currentUser");
+		System.out.println("dashboard.jsp, the currentUser is : "+currentUser);
+	%>
+	
+	<div class="box" >
+			<b>Dashboard</b>
+			<div class="yxj"></div>
+			<div id="pro" class="allPro">
+				<div class="bigbox">
+					<div id="pro1" class="pro">
+					</div>
+					<b id="prob1" class="prob">1</b>
+					<div class="opt">
+						<a id="opt1" href="#" onclick="" style="top:2px;">1.initiate</a>
+						<div id="cover1" class="cover" style="top:2px;"></div>
+					</div>
+				</div>
+				
+				<div class="bigbox">
+					<div id="pro2" class="pro">
+					</div>
+					<b id="prob2" class="prob">2</b>
+					<div class="opt">
+						<a id="opt2" href="#" onclick="" style="top:2px;">2.rating myself</a>
+						<div id="cover2" class="cover" style="top:2px;"></div>
+						<a id="opt3" href="#" onclick="" style="top:24px;">3.remind others</a>
+						<div id="cover3" class="cover" style="top:24px;"></div>
+						<a id="opt4" href="./NextStep" onclick="" style="top:46px;">4.next step</a>
+						<div id="cover4" class="cover" style="top:46px;"></div>
+					</div>
+				</div>
+				
+				<div class="bigbox">
+					<div id="pro3" class="pro">
+					</div>
+					<b id="prob3" class="prob">3</b>
+					<div class="opt">
+						<a id="opt5" href="#" onclick="" style="top:2px;">5.view report</a>
+						<div id="cover5" class="cover" style="top:2px;"></div>
+						<a id="opt10" href="./StartAPlan" onclick="" style="top:24px;">6.start plan</a>
+						<div id="cover10" class="cover" style="top:24px;"></div>
+						<a id="opt6" href="#" onclick="" style="top:46px;">7.review actions</a>
+						<div id="cover6" class="cover" style="top:46px;"></div>
+						<a id="opt7" href="#" onclick="" style="top:68px;">8.agree 2 things</a>
+						<div id="cover7" class="cover" style="top:68px;"></div>
+					</div>
+				</div>
+				
+				<div class="bigbox">
+					<div id="pro4" class="pro">
+					</div>
+					<b id="prob4" class="prob">4</b>
+					<div class="opt">
+						<a id="opt8" href="#" onclick="" style="top:2px;">9.execute plan</a>
+						<div id="cover8" class="cover" style="top:2px;"></div>
+					</div>
+				</div>
+				
+				<div class="bigbox">
+					<div id="pro5" class="pro">
+					</div>
+					<b id="prob5" class="prob">5</b>
+					<div class="opt">
+						<a id="opt9" href="#" onclick="" style="top:2px;">10.end this cycle</a>
+						<div id="cover9" class="cover" style="top:2px;"></div>
+					</div>
+				</div>
+				
+			</div >
+			
+			<div id="start" class="start">
+				
+				<div class="hero-unit" style="height:200px;padding:60px 0px 0px 60px;background-color:white;">
+				<h1>
+					Start a new  cycle
+				</h1>
+				
+				<p>
+					<a class="btn btn-primary btn-large" href="#" style="margin-top:30px;margin-left:50px;">start!</a>
+				</p>
+				</div>
+			</div>
+			
+			<div style="position:absolute;height:300px;margin-left:100px;width:850px;margin-top:50px;overflow:auto;background-color:#ebebeb;">
+				<table class="table table-striped">
+					<thead>
+					<tr>
+						<th>
+							task
+						</th>
+						<th>
+							initiator
+						</th>
+						<th>
+							my role
+						</th>
+
+					</tr>
+				</thead>
+				<tbody>
+				<% 	
+					int tasknum = 0;
+					RatingDAO ratingdao = new RatingDAO();
+					List rlist = ratingdao.findByToWhom(Long.parseLong(currentUser));
+					int rlistLength = rlist.size();
+					System.out.println("dashboard rlist.size="+rlistLength);
+					for( int i = 0 ; i < rlistLength ; i++ ){
+						Rating rating = (Rating)rlist.get(i);
+						if((rating.getTargetId()!=rating.getToWhom())&&(!rating.getFinished())&&(rating.getVolid())){
+							tasknum++;
+							Long targerID = rating.getTargetId();
+							EmployeeDAO employeedao = new EmployeeDAO();
+							String initiator = ((Employee)employeedao.findById(rating.getTargetId())).getEname();
+							String role="";
+							LayerDAO layerdao = new LayerDAO();
+							Long managerID = layerdao.findById(Integer.parseInt(employeedao.findById(Long.parseLong(currentUser)).getLayerId())).getManagerId();
+							if(managerID.equals(targerID)){
+								role = "direct report";
+							}
+							else if(layerdao.findById(Integer.parseInt(employeedao.findById(targerID).getLayerId())).getManagerId().equals(Long.parseLong(currentUser))){
+								role = "manager";
+							}else {
+								role = "others";
+							}
+				%>
+					<tr>
+						<td>
+							<a href="#">give a rating</a>
+						</td>
+						<td>
+							<%=rating.getTargetId()%>(<%=initiator %>)
+						</td>
+						<td>
+						<%=role %>
+						</td>
+					</tr>
+				<%
+						}
+					}
+					for( int i = 0 ; i < rlistLength ; i++ ){
+						Rating rating = (Rating)rlist.get(i);
+						if(whatRole.ifManager(Long.parseLong(currentUser), rating.getTargetId())&&options.ifHaveAReport(rating.getTargetId())){
+							
+				%>
+					<tr>
+						<td>
+							<a href="#">view a report</a>
+						</td>
+						<td>
+							<%=rating.getTargetId()%>(<%=jobnumberToName.jobnumtoname(rating.getTargetId()) %>)
+						</td>
+						<td>
+							manager
+						</td>
+					</tr>
+				<%			
+						}
+					}
+					
+					for( int i = 0 ; i < rlistLength ; i++ ){
+						Rating rating = (Rating)rlist.get(i);
+						if(whatRole.ifManager(Long.parseLong(currentUser), rating.getTargetId())&&!options.ifApproved(rating.getTargetId())){
+						tasknum++;
+				%>
+					<tr>
+						<td>
+							<a href="#">approve</a>
+						</td>
+						<td>
+							<%=rating.getTargetId()%>(<%=jobnumberToName.jobnumtoname(rating.getTargetId()) %>)
+						</td>
+						<td>
+							manager
+						</td>
+					</tr>
+				<%
+						}
+					}
+					System.out.println("tasknum="+tasknum);
+					session.setAttribute("tasknum", tasknum);
+					for( int i = 0 ; i < rlistLength ; i++ ){
+						Rating rating = (Rating)rlist.get(i);
+						if(!ifPlanEnd.ifplanend(rating.getTargetId())){
+				%>
+					<tr>
+						<td>
+							<a href="#">view plan progress</a>
+						</td>
+						<td>
+							<%=rating.getTargetId()%>(<%=jobnumberToName.jobnumtoname(rating.getTargetId()) %>)
+						</td>
+						<td>
+							manager
+						</td>
+					</tr>
+				<% 
+						}
+					}
+				%>
+				
+					
+						
+				</tbody>
+				</table>
+			</div>
+	</div>
+	
+	
+	
+	<%
+		if(ifHaveACycle.ifHaveACycle(currentUser)){
+	%>
+		<script>
+			$("#start").hide();
+			//$("#pro").hide();
+			//$("#pro1").css({"background-color":"#ff9018","border":"5px solid black"});
+			//$("#prob1").css("color","black");
+			//$("#href").removeAttribute("href");	
+		</script>
+	<%
+		int step = options.whichStep(currentUser);
+		System.out.println("step:"+step);
+		int bigStep = options.OneToFive(step);
+		System.out.println("bigStep:"+bigStep);
+	%>
+		<script>
+			var pro = "#pro"+<%=bigStep%>;
+			var prob = "#prob"+<%=bigStep%>;
+			var step = <%=step%>;
+			var tasknum = <%=tasknum %>;
+			var $tasknum = $("#tasknum");
+			
+			if(tasknum==0){
+				$tasknum.hide();
+			}else{
+				$tasknum.html(tasknum);
+			}
+			$(pro).css({"background-color":"#ff9018","border":"5px solid black"});
+			$(prob).css("color","black");
+			$("#opt6").hide();
+			$("#opt7").hide();
+			if(step==1){
+				$("#cover1").hide();
+				$("#opt1").css("color","#ff9018");
+			}
+			else if(step==2){
+				$("#cover2").hide();
+				$("#opt2").css("color","#ff9018");
+			}
+			else if(step==23){
+				$("#cover2").hide();
+				$("#opt2").css("color","#ff9018");
+				$("#cover3").hide();
+				$("#opt3").css("color","#ff9018");
+			}
+			else if(step==3){
+				$("#cover3").hide();
+				$("#opt3").css("color","#ff9018");
+			}
+			else if(step==34){
+				$("#cover3").hide();
+				$("#opt3").css("color","#ff9018");
+				$("#cover4").hide();
+				$("#opt4").css("color","#ff9018");
+			}
+			else if(step==67){
+				$("#opt6").show();
+				$("#opt7").show();
+				$("#cover5").hide();
+				$("#opt5").css("color","#ff9018");
+				$("#cover6").hide();
+				$("#opt6").css("color","#ff9018");
+				$("#cover7").hide();
+				$("#opt7").css("color","#ff9018");
+			}
+			else if(step==8){
+				$("#opt6").show();
+				$("#opt7").show();
+				$("#cover5").hide();
+				$("#opt5").css("color","#ff9018");
+				$("#cover8").hide();
+				$("#opt8").css("color","#ff9018");
+			}
+			else if(step==9){
+				$("#opt6").show();
+				$("#opt7").show();
+				$("#cover5").hide();
+				$("#opt5").css("color","#ff9018");
+				$("#cover9").hide();
+				$("#opt9").css("color","#ff9018");
+			}
+			else if(step==10){
+				$("#cover5").hide();
+				$("#opt5").css("color","#ff9018");
+				$("#cover10").hide();
+				$("#opt10").css("color","#ff9018");
+			}
+		</script>	
+	<%	
+		}else{
+	%>
+		<script>
+			$("#pro").hide();
+		</script>
+	<%
+		}
+		
+	%>
 
 </body>
 </html>

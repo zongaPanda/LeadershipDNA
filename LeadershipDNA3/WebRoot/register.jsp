@@ -46,7 +46,7 @@
 				if (email_address.val().search(re) != -1) {  
 					  
 				} else {  
-					window.alert ("请输入有效合法的E-mail地址 ！")  
+					window.alert ("请输入有效合法的E-mail地址 ！"); 
 					return false;  
 				} 
 
@@ -95,11 +95,14 @@
 		</script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>register</title>
+<title>Leadership DNA</title>
+<link rel="shortcut icon" href="img/sc.ico" />
 </head>
 
 <body>
-<div class="container"  style="height:768px;width:1366px;padding-top: 0px;background-color: #DCEAF4;">
+<%@ include file="staticTitle.jsp" %>
+
+<div class="container"  style="height:768px;width:1366px;padding-top: 0px;background-color: white;">
 	<div style="text-align: center;max-height: 40px;">
 	<h1>Register into the system</h1>
 	</div>
@@ -117,13 +120,13 @@
 	</div>
 	
 	 <form id="MailForm" method="post" action="./MailSender"> 
-		<div id="rightDIV" class="container" style="background-color:#F2F2F2;border:2px solid #E1E1E1; height:688px;width:900px;margin-left: 0px;margin-left: 20px;float: left;">
+		<div id="rightDIV" class="container" style="background-color:#fefefe;border:2px solid #E1E1E1; height:688px;width:900px;margin-left: 0px;margin-left: 20px;float: left;">
 			<div style="max-width: 850px;"><legend style="margin-left: 30px;">personal information</legend></div>
 			<div style="margin-left: 30px;">
 				<label  style="margin-top: 30px;font-size: 20px;">enter your job number</label>
-	    		<input    id="job_number" name="jn" class="input-xlarge" type="text" placeholder="job number...">
+	    		<input    id="job_number" name="jn" class="input-xlarge" type="text" placeholder="job number..." MaxLength="6" onkeyup="value=value.replace(/[^\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
 				<label style="margin-top: 30px;font-size: 20px;">enter your name</label>
-	    		<input id="name" name="n" class="input-xlarge" type="text" placeholder="your name...">
+	    		<input id="name" name="n" class="input-xlarge" type="text" placeholder="your name..." onkeyup="value=value.replace(/[^\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
 	    		<label style="margin-top: 30px;font-size: 20px;">enter your email address you registed in company</label>
 	    		<input id="email_address" name="ea" class="input-xlarge" type="text" placeholder="email address...">
 	    		

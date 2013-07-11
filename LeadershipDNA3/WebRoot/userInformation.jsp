@@ -1,26 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
     pageEncoding="utf8"%>
+<%@ page import="po.*" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Calendar" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>Insert title here</title>
+<title>Leadership DNA</title>
+<script type="text/javascript" src="/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<link rel="shortcut icon" href="img/sc.ico" />
 </head>
 		<script src="js/jquery1.83.js" > </script>
         <script src="js/bootstrap-transition.js"></script>
         <script src="js/bootstrap-modal.js"></script>
         <script src="js/bootstrap-button.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script src="js/messenger.min.js"></script>
+		
         <link rel="stylesheet" type="text/css" href="css/messenger.css">
         <link rel="stylesheet" type="text/css" href="css/messenger-theme-future.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link href="/css/datetimepicker.css" rel="stylesheet" media="screen">
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    	<link href="css/datetimepicker.css" rel="stylesheet" media="screen">
 <style type="text/css">
 	.box{
 		position:relative;
 		border: 1px solid #d5d5d5;
 		width: 1000px;
 		display:block;
-		height: 1000px;
+		height: 760px;
 		margin-top:50px;
 		margin-left:350px;
 		border-radius:0 120px 120px 165px / 0 20px 20px 165px;
@@ -32,7 +44,7 @@
 		position:absolute;
 		top: -15px;
 		left: -15px;
-		color:white;
+		color:#e6e6e6;
 		text-shadow:0 0 5px #770101;
 		display:inline-block;
 		border:1px solid #5b0404;
@@ -137,40 +149,95 @@
 	
 	
 </style>
+
+<script>
+	$(function(){
+		$("#myModal").modal('hide');
+		
+	});
+	
+	function test(e){
+		//$("#sex").val(2011);
+		//window.alert($("#sex").val());
+		//$("#2_011").attr("selected",true);
+		window.alert($('#sex').val());
+		window.alert($("#select_id").find("option:selected").text());
+		$("#bir_year").val('2011');	
+	}
+	
+	function save(e){
+		var $sex = $("#sex");
+		var $email = $("#email");
+		var $telephone = $("#telephone");
+		var $address = $("#address");
+		var $birthday = $("#birthday");
+		var $qq = $("#qq");
+		var $education = $("#education");
+		var $myModal = $("#myModal");
+		var $cautionContent = $("#cautionContent");
+		var $information = $("#information");
+		//window.alert($sex.val());
+		//window.alert($email.val());
+		//window.alert($telephone.val());
+		//window.alert($address.val());
+		//window.alert($birthday.val());
+		//window.alert($qq.val());
+		//window.alert($education.val());
+		var regu = "^(([0-9a-zA-Z]+)|([0-9a-zA-Z]+[_.0-9a-zA-Z-]*[0-9a-zA-Z]+))@([a-zA-Z0-9-]+[.])+([a-zA-Z]{2}|net|NET|com|COM|gov|GOV|mil|MIL|org|ORG|edu|EDU|int|INT)$"  
+		var re = new RegExp(regu);
+		if($email.val()!=''){
+			if($email.val().search(re)!=-1){
+				
+			}
+			else{
+				$cautionContent.html('not legal email format');
+				$myModal.modal('show');
+				return false;
+			}
+		}
+		
+		$information.submit();
+
+	}
+</script>
 <body>
 	<%@ include file="afterLogin.jsp" %>
+	<%
+		currentUser = (String)session.getAttribute("currentUser");
+		System.out.println("userInformation.jsp, the currentUser is : "+currentUser);
+		UsersDAO uDAO = new UsersDAO();
+		Users u = new Users();
+		Date d = ((Users)uDAO.findByUid(Long.parseLong(currentUser)).get(0)).getBirthday();
+		//int year = d.getYear();
+		//Calendar c1 = Calendar.getInstance(); 
+		//c1.setTime(d);
+		int tasknum = (Integer)session.getAttribute("tasknum");
+		System.out.println("tasknum="+tasknum);
+		
+	%>
+	
 	
 		<div class="box" >
 			<b>User information</b>
 			<div class="yxj"></div>
+			
+			<form id="information" name="information" method="post" action="./UpdateInfo">
+			
 			<div style="position:relative;margin-top: 50px; margin-left: 80px;height:80%;padding-top: 20px;" >
-				<!--  
-					<div style="height:80px;vertical-align: middle;">
-					<span class="left">sex</span>
-					<select class="span2 right">
-					<option>male</option>
-					<option>female</option>
-					</select>
-					
-				</div>
-				<div>
-					<span class="left" style="font-size: 20px;">sex</span>
-				</div>
-				https://github.com/zongaPanda/LeadershipDNA.git
-				-->
 				<div class="row">
 					<div class="left" >job number</div>
-					<div style="font-size: 18px;padding: 0 10px;" class="right">123450
-						<a href="#" style="color:#a37652;">change password</a>
+					<div id="job_number" style="font-size: 18px;padding: 0 10px;" class="right">123450
+						<a href="changePassword.jsp" style="color:#a37652;">change password</a>
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="left" >sex</div>
 					<div style="font-size: 18px;padding: 0 10px;" class="right">
-						<select class="span2 right">
-							<option>male</option>
-							<option>female</option>
+						<select id="sex" name="sex" class="span2 right">
+							<option value="-1">------------------------</option>
+							<option value="0">male</option>
+							<option value="1">female</option>
 						</select>
 					</div>
 				</div>
@@ -178,33 +245,109 @@
 				<div class="row">
 					<div class="left" >email</div>
 					<div style="font-size: 18px;padding: 0 10px;" class="right">
-						<input class="span3" type="text" value="1433119561@qq.com"/>
+						<input id="email" name="email" class="span3" type="text" value="" MaxLength="30"/>
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="left">telephone</div>
 					<div style="font-size: 18px;padding: 0 10px;" class="right">
-						<input class="span3" type="text" value="1433119561@qq.com"/>
+						<input id="telephone" name="telephone" class="span3" type="text" value="" MaxLength="11"/>
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="left">address</div>
 					<div style="font-size: 18px;padding: 0 10px;" class="right">
-						<input class="span3" type="text" value="Apple Rd."/>
+						<input id="address" name="address" class="span3" type="text" value="" MaxLength="45"/>
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="left">birthday</div>
 					<div style="font-size: 18px;padding: 0 10px;" class="right">
-						<input class="span3" type="text" value="Apple Rd."/>
+						
+						<div class="input-append date form_datetime" >
+    						<input id="birthday" name="birthday" size="16" type="text" value="" readonly>
+    						<span class="add-on"><i class="icon-remove"></i></span>
+    						<span class="add-on"><i class="icon-calendar"></i></span>
+						</div>
+						
+					</div>
+						
+				</div>
+				
+				<div class="row">
+					<div class="left">qq</div>
+					<div style="font-size: 18px;padding: 0 10px;" class="right">
+						<input id="qq" name="qq" class="span3" type="text" value="" MaxLength="10"/>
 					</div>
 				</div>
 				
+				<div class="row">
+					<div class="left">education</div>
+					<div style="font-size: 18px;padding: 0 10px;" class="right">
+						<select id="education" name="education" class="span2 right">
+							<option value="-1">------------------------</option>
+							<option value="1">doctor</option>
+							<option value="2">master</option>
+							<option value="3">university student</option>
+							<option value="4">community college</option>
+							<option value="5">polytechnic school</option>
+							<option value="6">vocational school</option>
+							<option value="7">senior high school</option>
+							<option value="8">junior high school</option>
+							<option value="9">primary school</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="row">
+					<button class="btn btn-primary left" type="button" onclick="save(this)">sava</button>
+				</div>
+				
 			</div>
+			</form>
 		</div>
+		
+		<div id="myModal" class="modal hide fade">
+  			<div class="modal-header">
+    			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    			<h3 style="color: red;">ERROR!</h3>
+  			</div>
+  			<div class="modal-body">
+    			<p style="font-size: 20px;" id="cautionContent">please complete the information</p>
+ 			</div>
+  			<div class="modal-footer">
+    			<a class="btn" data-dismiss="modal" aria-hidden="true">close</a>
+   				<!-- <a href="#" class="btn btn-primary">Save changes</a> -->
+  			</div>
+		</div>
+   </body>
+   	<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+   <script>
+	   	var tasknum = <%=tasknum %>;
+		var $tasknum = $("#tasknum");
+		
+		if(tasknum==0){
+			$tasknum.hide();
+		}else{
+			$tasknum.html(tasknum);
+		}
+		$(".form_datetime").datetimepicker({
+	        format: "yyyy-mm-dd",
+	        weekStart: 1,
+	        autoclose: true,
+	        startView:2,
+	        minView:2,
+	        maxView:4,
+	        keyboardNavigation:true,
+	        todayBtn: true,
+	        pickerPosition: "bottom-left"
+	    });
+
+   </script>
 
 </body>
 </html>

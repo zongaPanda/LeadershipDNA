@@ -19,7 +19,8 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>Insert title here</title>
+<title>Leadership DNA</title>
+<link rel="shortcut icon" href="img/sc.ico" />
 </head>
 
 <style type="text/css">
@@ -239,7 +240,7 @@
               <%
               	if(currentUser!=null){
               %>
-              <li class="active"><a href="afterLogin.jsp" >LeadershipDNA</a></li>
+              <li class="active"><a href="dashboard.jsp" >LeadershipDNA</a></li>
               <%
               	}
               %>
@@ -281,17 +282,19 @@
 	<div id="menu" style="width: 17%;margin-top: 41px;float: left;height:800px;;">
 			<ul class="quick_menu">
 		  <li style="color: #ff8400">Welcome,</li>
-		  <li class="user_icon"><a href="#" ><img src="img/7.jpg" alt="Tina"><b>4</b></a></li>
+		  <li class="user_icon"><a href="userInformation.jsp" ><img src="img/sc.png" alt="Tina"><b id="tasknum" name="tasknum">4</b></a></li>
 		  <li class="user_fun">
 		    <a href="#" title="PandaThemes" style="color:#ff8400;"><%=currentUser %><b>ˇ</b></a>
 		    <ul class="user_fun_sub">
 		      <li><a href="dashboard.jsp">Dashboard</a></li>
 		      <li><a href="userInformation.jsp">User information</a></li>
-		      <li><a href="nominate.jsp">nominate</a></li>
+		      <li><a href="nominate.jsp">History</a></li>
 		    </ul>
 		  </li>
 		<ul>
 	</div>
+	
+	
 	
 	<!--  <div style="margin-left:30px;;margin-top:41px;float:left;background-color: #ff8400 ;width: 60%;height:500px;">
 	</div>-->

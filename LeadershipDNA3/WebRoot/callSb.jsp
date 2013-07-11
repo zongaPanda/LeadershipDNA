@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>Insert title here</title>
+<title>Leadership DNA</title>
 		<script src="js/jquery1.83.js" > </script>
         <script src="js/bootstrap-transition.js"></script>
         <script src="js/bootstrap-modal.js"></script>
@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/docs.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
+		<link rel="shortcut icon" href="img/sc.ico" />
 </head>
 <body>
 	<%@ include file="staticHead.jsp" %>

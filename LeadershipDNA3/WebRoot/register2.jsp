@@ -27,9 +27,7 @@
 			}
 		</style>
 		<script type="text/javascript">
-			//window.onload(function(){$('#rightDIV2').hide();}	);
 			$(document).ready(function(){$('#rightDIV').hide();$('#rightDIV3').hide();$("#myModal").modal('hide');
-			//$("#alert").hide();
 			});
 		
 			function hiden(e){
@@ -56,7 +54,7 @@
 			
 			$._messengerDefaults = {
 					extraClasses: 'messenger-fixed messenger-theme-future messenger-on-top messenger-on-right'
-				}
+				};
 			
 			function showMsg(e){
 				var msg;
@@ -82,11 +80,13 @@
 		</script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>register</title>
+<title>Leadership DNA</title>
+<link rel="shortcut icon" href="img/sc.ico" />
 </head>
 
 <body>
-<div class="container"  style="height:768px;width:1366px;padding-top: 0px;background-color: #DCEAF4;">
+<%@ include file="staticTitle.jsp" %>
+<div class="container"  style="height:768px;width:1366px;padding-top: 0px;background-color: white;">
 	<div style="text-align: center;max-height: 40px;">
 	<h1>Register into the system</h1>
 	</div>
@@ -104,7 +104,7 @@
 	</div>
 	
 	<form id="LicenseForm" method="post" action="./CheckLicense"> 
-	<div id="rightDIV2" class="container" style="background-color:#F2F2F2;border:2px solid #E1E1E1; height:688px;width:900px;margin-left: 0px;margin-left: 20px;float: left;">
+	<div id="rightDIV2" class="container" style="background-color:#fefefe;border:2px solid #E1E1E1; height:688px;width:900px;margin-left: 0px;margin-left: 20px;float: left;">
 		<div style="max-width: 850px;"><legend style="margin-left: 30px;">invite license</legend></div>
 		<div style="margin-left: 30px;">
 			<label style="margin-top: 30px;font-size: 20px;">we send an invite license to your email, please enter it.</label>
@@ -130,6 +130,7 @@
 						</div>
 					</div>
 				</div>
+				
     	<div style="margin-top: 10px;">
     		<button class="btn btn-large btn-primary"  type="button"  style="margin-left: 50px;" onclick="hiden2(this)">confirm</button>
     	</div>

@@ -33,7 +33,7 @@ public class notApprovePlan extends HttpServlet{
 		
 		PlanDAO pDao=new PlanDAO();
 		Plan plan=pDao.findById(pid);
-      
+        pDao.disConfirm(plan);
         
         /*update the support the manager want to add*/
         String []scid=request.getParameterValues("cid");

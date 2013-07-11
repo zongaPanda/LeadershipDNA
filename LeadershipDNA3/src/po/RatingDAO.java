@@ -2,6 +2,8 @@ package po;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import org.hibernate.CacheMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,6 +13,7 @@ public class RatingDAO {
 	public static final String TARGET_ID = "targetId";
 	public static final String TO_WHOM = "toWhom";
 	public static final String FINISHED = "finished";
+	public static final String VOLID = "volid";
 	
 	public void save(Rating rating){
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
@@ -43,11 +46,27 @@ public class RatingDAO {
 		}	
 	}
 	
+	public void update(Rating rating){
+		Session session = HibernateSessionFactory.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			session.update(rating);
+			tx.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			tx.rollback();
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+	}
+	
 	public void newRating(long t,long r){
 		Rating rating=new Rating();
 		rating.setTargetId(t);
 		rating.setToWhom(r);
 		rating.setFinished(false);
+		rating.setVolid(true);
 		
 		Date now=new Date();
 		rating.setStartDate(now);
@@ -79,7 +98,7 @@ public class RatingDAO {
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
 		try {	
 			String queryString = "from Rating as model where model."+propertyName+"=?";
-			Query queryObject = session.createQuery(queryString);
+			Query queryObject = session.createQuery(queryString).setCacheMode(CacheMode.REFRESH);
 			queryObject.setParameter(0, value);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -102,6 +121,10 @@ public class RatingDAO {
 
 	public List findByFinished(Object finished) {
 		return findByProperty(FINISHED, finished);
+	}
+	
+	public List findByVolid(Object volid){
+		return findByProperty(VOLID,volid);
 	}
 	
 	public List findAll(){

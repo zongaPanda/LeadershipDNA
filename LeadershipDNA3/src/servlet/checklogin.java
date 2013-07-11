@@ -1,4 +1,5 @@
 package servlet;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -15,30 +16,32 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import method.*;
 
-public class checklogin extends HttpServlet{
-	
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
-		doPost(request,response);
+public class checklogin extends HttpServlet {
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
 	}
-	
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-	throws ServletException, IOException {
-		String uid=request.getParameter("username");
-		String psw=request.getParameter("password");
+			throws ServletException, IOException {
+		String uid = request.getParameter("username");
+		String psw = request.getParameter("password");
 		checkloginMethod clm = new checkloginMethod();
 		Long l = Long.parseLong(uid);
 		HttpSession session = request.getSession();
-		if(clm.checkNameAndPwd(l, psw)){
+		session.setMaxInactiveInterval(3600);
+		if (clm.checkNameAndPwd(l, psw)) {
 			session.setAttribute("login", true);
 			session.setAttribute("currentUser", uid);
-			response.sendRedirect("afterLogin.jsp");
+			response.sendRedirect("dashboard.jsp");
 		}
-		
-		else{
+
+		else {
 			session.setAttribute("login", false);
 			response.sendRedirect("login.jsp");
 		}
-		//response.sendRedirect("staticHead.jsp");
+		// response.sendRedirect("staticHead.jsp");
 	}
-	
+
 }

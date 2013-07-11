@@ -76,8 +76,50 @@
     <url-pattern>/addAction</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>GetBackPassword</servlet-name>
+    <servlet-class>servlet.GetBackPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetBackPassword</servlet-name>
+    <url-pattern>/GetBackPassword</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>NextStep</servlet-name>
+    <servlet-class>servlet.NextStep</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NextStep</servlet-name>
+    <url-pattern>/NextStep</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>StartAPlan</servlet-name>
+    <servlet-class>servlet.StartAPlan</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StartAPlan</servlet-name>
+    <url-pattern>/StartAPlan</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EndCycle</servlet-name>
+    <servlet-class>servlet.EndCycle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EndCycle</servlet-name>
+    <url-pattern>/EndCycle</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ChangePassword</servlet-name>
+    <servlet-class>servlet.ChangePassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePassword</servlet-name>
+    <url-pattern>/ChangePassword</url-pattern>
+  </servlet-mapping>
+
   
   <servlet>
+
   <servlet-name>agreePlan</servlet-name>
     <servlet-class>servlet.agreePlan</servlet-class>
   </servlet>
@@ -129,6 +171,16 @@
   <servlet-mapping>
     <servlet-name>executeServlet2</servlet-name>
     <url-pattern>/executeServlet2</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>UpdateInfo</servlet-name>
+    <servlet-class>servlet.UpdateInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateInfo</servlet-name>
+    <url-pattern>/UpdateInfo</url-pattern>
   </servlet-mapping>
 </web-app>
 

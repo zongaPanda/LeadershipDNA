@@ -38,11 +38,13 @@
         margin-bottom: 15px;
         padding: 7px 9px;
       }
+      a:HOVER {
+		text-decoration: none;
+	  }
 
     </style>
     
     <script>
-    //$('#myModal').modal('show');
     $(document).ready(function(){$('#myModal2').modal('hidden');});
     
     window.onload=function(){
@@ -83,14 +85,17 @@
 
 
   <head> 
-    <title>login</title>
+    <title>Leadership DNA</title>
+    <link rel="shortcut icon" href="img/sc.ico" />
   </head>
   
   <body >
   
+  	<%@ include file="staticTitle.jsp" %>
+  
 
   
-    <div  class="container" style="height:768px;width:1366px;padding-top: 0px;background-color: #DCEAF4;float: none;">
+    <div  class="container" style="height:768px;width:1366px;padding-top: 0px;background-color: white;float: none;">
     	<div style="text-align: center;">
     		<h1>Leadership Development Need & Actions</h1>
     	</div>
@@ -99,11 +104,12 @@
         	<input id="a" name="username" type="text" class="input-block-level" placeholder="your job number ( digit only )" onkeyup="value=value.replace(/[^\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" >
         	<input id="b" name="password" type="password" class="input-block-level" placeholder="password">
      		<div>
-     			  <label class="checkbox">
+     			 <!--   <label class="checkbox">
         			<input type="checkbox"> Remember me
-      			</label>
+      			</label>-->
+      			<a href="getBackPwd.jsp" style="margin-bottom: 10px;">get back password</a>
      		</div>
-     		<div>
+     		<div style="margin-top: 10px;">
      			<button id="btn1" class="btn btn-large btn-primary" type="button"   onclick="modal(this)" style="margin-left: 50px;">Log In</button>
      			<button id="btn2" class="btn btn-large btn-primary" type="button"   onclick="window.location.href='register.jsp'" style="float: right;margin-right: 50px;">Register</button>
      		</div>
@@ -149,6 +155,7 @@
         </script>
       <%
     }
+    session.removeAttribute("login");
 		}
   %>
 	

@@ -18,6 +18,7 @@ public class Rating implements java.io.Serializable {
 	private Date startDate;
 	private Date dueDate;
 	private Boolean finished;
+	private Boolean volid;
 	private Set answerses = new HashSet(0);
 
 	// Constructors
@@ -34,12 +35,13 @@ public class Rating implements java.io.Serializable {
 
 	/** full constructor */
 	public Rating(Long targetId, Long toWhom, Date startDate, Date dueDate,
-			Boolean finished, Set answerses) {
+			Boolean finished, Boolean volid, Set answerses) {
 		this.targetId = targetId;
 		this.toWhom = toWhom;
 		this.startDate = startDate;
 		this.dueDate = dueDate;
 		this.finished = finished;
+		this.volid = volid;
 		this.answerses = answerses;
 	}
 
@@ -91,6 +93,14 @@ public class Rating implements java.io.Serializable {
 
 	public void setFinished(Boolean finished) {
 		this.finished = finished;
+	}
+	
+	public Boolean getVolid(){
+		return this.volid;
+	}
+	
+	public void setVolid(Boolean volid){
+		this.volid = volid;
 	}
 
 	public Set getAnswerses() {

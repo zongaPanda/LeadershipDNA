@@ -10,6 +10,14 @@ public class UsersDAO {
 	public static final String PASSWD = "passwd";
 	public static final String EMAIL = "email";
 	public static final String LICENSE = "license";
+	public static final String SEX = "sex";
+	public static final String TELEPHONE = "telephone";
+	public static final String ADDRESS = "address";
+	public static final String QQ = "qq";
+	public static final String MSN = "msn";
+	public static final String EDUCATION = "education";
+	public static final String IFINCYCLE = "ifincycle";
+	
 	
 	public void save(Users user){
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
@@ -55,7 +63,6 @@ public class UsersDAO {
 		}finally{
 			session.close();
 		}
-		
 	}
 	
 	public Users findById(java.lang.Long id) {
@@ -101,6 +108,34 @@ public class UsersDAO {
 
 	public List findByLicense(Object license) {
 		return findByProperty(LICENSE, license);
+	}
+	
+	public List findBySex(Object sex){
+		return findByProperty(SEX, sex);
+	}
+	
+	public List findByTelephone(Object telephone){
+		return findByProperty(TELEPHONE, telephone);
+	}
+	
+	public List findByAddress(Object address){
+		return findByProperty(ADDRESS, address);
+	}
+	
+	public List findByQq(Object qq){
+		return findByProperty(QQ, qq);
+	}
+	
+	public List findByMsn(Object msn){
+		return findByProperty(MSN, msn);
+	}
+	
+	public List findByEducation(Object education){
+		return findByProperty(EDUCATION, education);
+	}
+	
+	public List findByIfincycle(Object ifincycle) {
+		return findByProperty(IFINCYCLE, ifincycle);
 	}
 	
 	public List findAll(){

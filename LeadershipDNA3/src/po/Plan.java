@@ -12,7 +12,7 @@ public class Plan implements java.io.Serializable {
 	// Fields
 
 	private Long pid;
-	private String targetId;
+	private Long targetId;
 	private Boolean isApproved;
 	private Boolean finished;
 	private Boolean isConfirmed;
@@ -26,12 +26,12 @@ public class Plan implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Plan(String targetId) {
+	public Plan(Long targetId) {
 		this.targetId = targetId;
 	}
 
 	/** full constructor */
-	public Plan(String targetId, Boolean isApproved, Boolean finished,
+	public Plan(Long targetId, Boolean isApproved, Boolean finished,
 			Set remarkses, Set chosenActionses) {
 		this.targetId = targetId;
 		this.isApproved = isApproved;
@@ -50,11 +50,11 @@ public class Plan implements java.io.Serializable {
 		this.pid = pid;
 	}
 
-	public String getTargetId() {
+	public Long getTargetId() {
 		return this.targetId;
 	}
 
-	public void setTargetId(String targetId) {
+	public void setTargetId(Long targetId) {
 		this.targetId = targetId;
 	}
 

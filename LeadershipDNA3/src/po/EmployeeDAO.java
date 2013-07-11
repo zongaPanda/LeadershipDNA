@@ -8,6 +8,7 @@ import SessionFactory.*;
 public class EmployeeDAO {
 	public static final String ENAME = "ename";
 	public static final String LAYER_ID = "layerId";
+	public static final String UID = "uid";
 	
 	public void save(Employee employee){
 		Session session = HibernateSessionFactory.getSessionFactory().openSession();
@@ -75,6 +76,10 @@ public class EmployeeDAO {
 
 	public List findByLayerId(Object layerId) {
 		return findByProperty(LAYER_ID, layerId);
+	}
+	
+	public List findByUid(Object uid) {
+		return findByProperty(UID, uid);
 	}
 	
 	public List findAll(){

@@ -76,13 +76,13 @@
 
 				<%
 				List list = AnswersDAO.ret();
-				AnswersDAO anDao = new AnswersDAO();
+		//		AnswersDAO anDao = new AnswersDAO();
 				if (list != null) {
 					Iterator itr = list.iterator();
 					int i = 0;
 					while (itr.hasNext()) {
 
-						Questions nextObj = (Questions) itr.next();
+         			Questions nextObj = (Questions) itr.next();
 			%>
 				<div style="background: pink; margin-top: 20px; max-width: 580px;">
 					<%=i + 1%>

@@ -46,7 +46,7 @@
 						</thead>
 						<tbody>
 							<%
-								session.setAttribute("planID", "1");
+								session.setAttribute("planID", "2");
 								String spid = (String) session.getAttribute("planID");
 								Long pid = Long.parseLong(spid);
 

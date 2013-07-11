@@ -24,7 +24,7 @@ public class MailSender extends HttpServlet{
 	public static final String mailPassword="2156616611";
 	public static final String mailServer="smtp.sina.com";
 	
-	public static void send(String str_from,String str_to,String str_title,String str_content){
+	public static boolean send(String str_from,String str_to,String str_title,String str_content){
 		try{//建立邮件会话
 			Properties props = new Properties();
 			props.put("mail.smtp.host",mailServer);
@@ -50,10 +50,12 @@ public class MailSender extends HttpServlet{
 			transport.connect(mailServer,mailCount,mailPassword);
 			transport.sendMessage(message,message.getAllRecipients());
 			transport.close();
+			return true;
 			
 			
 		}catch(Exception e){
 			e.printStackTrace();
+			return false;
 		}	
 	}
 	
@@ -78,13 +80,16 @@ public class MailSender extends HttpServlet{
 					response.sendRedirect("register2.jsp");
 				}else if(msm==1){
 					System.out.println("错误类型："+msm);
-					response.sendRedirect("registerfailed.jsp");
+					response.sendRedirect("registerfailed.jsp?msm=1");
 				}else if(msm==2){
 					System.out.println("错误类型："+msm);
-					response.sendRedirect("registerfailed.jsp");
+					response.sendRedirect("registerfailed.jsp?msm=2");
 				}else if(msm==3){
 					session.setAttribute("registerUser", job_number);
 					response.sendRedirect("register2.jsp");
+				}else if(msm==4){
+					System.out.println("错误类型："+msm);
+					response.sendRedirect("registerfailed.jsp?msm=4");
 				}
 				//send(a,b,c,d);
 				//response.sendRedirect("register2.jsp");	

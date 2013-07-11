@@ -14,6 +14,10 @@ public class MailSenderMethod {
 			return 1;//错误类型1:该id的employee已经注册，及已经存在于users表中了
 		}
 		
+		if(employeeDAO.findByUid(Long.parseLong(job_number)).size()==0){
+			return 4;//错误类型4：employee中没有这号人
+		}
+		
 		if(!employeeDAO.findById(Long.parseLong(job_number)).getEname().equals(name)){
 			System.out.println("数据库中的名字是："+employeeDAO.findById(Long.parseLong(job_number)).getEname());
 			System.out.println("输入的名字是："+name);
