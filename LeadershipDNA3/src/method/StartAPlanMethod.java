@@ -9,6 +9,7 @@ public class StartAPlanMethod {
 			plan.setTargetId(Long.parseLong(currentUser));
 			plan.setIsApproved(false);
 			plan.setFinished(false);
+			plan.setIsApproved(false);
 			plandao.save(plan);
 			return true;
 		}catch(Exception e){

@@ -70,7 +70,6 @@
   </head>
   
   <body >
-  <%@ include file="staticTitle.jsp" %>
   
 <%
   ChosenActionsDAO cDao=new ChosenActionsDAO();

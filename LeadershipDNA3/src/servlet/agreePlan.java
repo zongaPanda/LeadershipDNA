@@ -75,6 +75,7 @@ public class agreePlan extends HttpServlet{
 			  }
 		  }
 		}
+		response.sendRedirect("dashboard.jsp");
 		
 		  
 		  

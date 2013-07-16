@@ -99,7 +99,7 @@
     	<div style="text-align: center;">
     		<h1>Leadership Development Need & Actions</h1>
     	</div>
-      	 <form id="form1" class="form-signin" action="./CheckLogin" method="post">
+      	 <form id="form1" class="form-signin" action="CheckLogin" method="post">
         	<h2 class="form-signin-heading" style="text-align: center;">User</h2>
         	<input id="a" name="username" type="text" class="input-block-level" placeholder="your PWID ( digit only )" onkeyup="value=value.replace(/[^\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" >
         	<input id="b" name="password" type="password" class="input-block-level" placeholder="password" onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">

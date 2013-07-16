@@ -13,10 +13,8 @@
         <script src="js/jquery1.83.js" > </script>
         <script src="js/bootstrap-transition.js"></script>
         <script src="js/bootstrap-modal.js"></script>
-        <script src="js/bootstrap-button.js"></script>      
-        
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-		
+        <script src="js/bootstrap-button.js"></script>          
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">	
 		<script src="js/jquery-1.9.1.js"></script>
 	    <script src="js/jquery.ui.core.js"></script>
 	    <script src="js/jquery.ui.widget.js"></script>
@@ -48,10 +46,7 @@
     
     <script>
     function select(){
-    	//window.open('reviewActions.jsp');
-    	//window.navigate('reviewActions.jsp');
         self.location='reviewActions.jsp';
-    	
     }
     </script>
     
@@ -67,7 +62,6 @@
   </head>
   
   <body >
-  <%@ include file="staticTitle.jsp" %>
   
 <%
   ChosenActionsDAO cDao=new ChosenActionsDAO();

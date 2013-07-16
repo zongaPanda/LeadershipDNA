@@ -480,6 +480,7 @@
 	
 	
 	<%
+		String p="";
 		if(ifHaveACycle.ifHaveACycle(currentUser)){
 	%>
 		<script>
@@ -498,7 +499,7 @@
 			for( int i = 0 ; i < plistLength ; i++ ){
 				Plan plan = (Plan)plist.get(i);
 				if(!plan.getFinished()){
-					String p = Long.toString(plan.getPid());
+					p = Long.toString(plan.getPid());
 					session.setAttribute("pid", p);
 				}
 			}
@@ -589,7 +590,7 @@
 		</script>
 	<%
 		}
-		
+		System.out.println("dashboard中传的session.pid="+p);
 	%>
 
 </body>

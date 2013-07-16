@@ -27,11 +27,11 @@ public class savePlan extends HttpServlet{
 				
 				//String action=request.getParameter("action");
 				
-				ChosenActionsDAO caDao=new ChosenActionsDAO();
-				
-				
+				ChosenActionsDAO caDao=new ChosenActionsDAO();		
 				HttpSession hSession=request.getSession();
-				String spid=(String)hSession.getAttribute("planID");
+				String spid=(String)hSession.getAttribute("pid");
+				System.out.println("Äã´óÒ¯£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡");
+				System.out.println("savePlan.jsp pid="+spid);
 				Long pid=Long.parseLong(spid);
 				 
 				
@@ -44,7 +44,6 @@ public class savePlan extends HttpServlet{
 				String []sdate=request.getParameterValues("duedate");
 				String []support=request.getParameterValues("support");
 				List lastChosens=caDao.findByPlan(plan);
-				//System.out.println("date.length "+sdate.length);
 				if(scid!=null){
 				  for(int i=0;i<scid.length;i++){
 					try{
@@ -75,6 +74,7 @@ public class savePlan extends HttpServlet{
 					  }
 				  }
 				}
+				response.sendRedirect("dashboard.jsp");
 				
 				  
 				  
