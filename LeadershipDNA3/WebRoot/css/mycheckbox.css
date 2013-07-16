@@ -1,0 +1,42 @@
+.checkbox{
+    display: none;
+}
+.checkbox + label{
+    width: 24px;
+    height: 12px;
+    display: inline-block;
+    border: 1px solid #959595;
+    margin: 3px;
+    vertical-align: middle;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+.checkbox + label span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+ 
+    background: -webkit-linear-gradient(top, #5071F5, #0E38E7);
+    -webkit-transition: left 0.1s;
+    border-radius: 2px 0 0 2px;
+}
+.checkbox ~ select{
+    vertical-align: middle;
+    display: none;
+}
+.checkbox ~ .cate-1{
+    display: inline-block;
+}
+.checkbox:checked + label span{
+    left: 50%;
+    border-radius: 0 2px 2px 0 ;
+}
+.checkbox:checked ~ .cate-2{
+    display: inline-block;
+}
+.checkbox:checked ~ .cate-1{
+    display: none;
+}
